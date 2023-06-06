@@ -25,11 +25,12 @@
 
   
 
-<link rel="canonical" href="http://eeeeerror.github.io/categories/">
+<link rel="canonical" href="http://eeeeerror.github.io/2023/06/07/dll%E6%B3%A8%E5%85%A5/">
 
 
 
-  <title>全部分类 |
+  <title>
+dll注入 |
 eeeeerror的博客 = eeeeerror = miss u</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -57,8 +58,19 @@ eeeeerror的博客 = eeeeerror = miss u</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">全部分类
+  <h1 itemprop="name headline">dll注入
   </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-06-07 00:17:58">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-07T00:17:58+08:00">2023-06-07</time>
+  </span>
+</div>
+
 
           </div>
         </div>
@@ -88,12 +100,12 @@ eeeeerror的博客 = eeeeerror = miss u</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -114,10 +126,125 @@ eeeeerror的博客 = eeeeerror = miss u</title>
       <div class="inner">
         <div id="main" class="pjax">
           
-  <div class="collapse wrap">
-    <h2 class="item title"><a href="/">首页</a> <small>/</small> 暂无分类</h2>
+  <div class="article wrap">
     
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://eeeeerror.github.io/2023/06/07/dll%E6%B3%A8%E5%85%A5/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="eeeeerror">
+    <meta itemprop="description" content="miss u, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="eeeeerror">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="dll注入"><a class="markdownIt-Anchor" href="#dll注入">#</a> dll 注入</h2>
+<p>一。什么是 dll</p>
+<p>​	动态链接库，是微软公司在微软 windows 操作系统中，实现共享函数库概念的一种方式，库函数的扩展名是。dll，ocx 或者.drv</p>
+<p>二。为何要有 dll</p>
+<p>​	由于进程的地址都是独立的，当多个进程共享相同的库时，每个库都在硬盘和进程彼此存放一份的话，防止浪费内存，便推出了 dll，dll 在硬盘存为一个文件，在内存使用一个实例（instance）</p>
+<p>三。什么是 dll 注入</p>
+<p>​	我们可以利用 dll 的机制让 a 程序强行执行 b 给定的的 dll 库，达到 a 进程控制 b 进程的目的</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029530.png" alt="image-20230424210630335"></p>
+
   </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-06-07 00:29:30" itemprop="dateModified" datetime="2023-06-07T00:29:30+08:00">2023-06-07</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="eeeeerror 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="eeeeerror 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="eeeeerror 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>eeeeerror <i class="ic i-at"><em>@</em></i>eeeeerror
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://eeeeerror.github.io/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">http://eeeeerror.github.io/2023/06/07/dll注入/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/06/06/hello-world/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;rjdhcSgEN8COBPA.jpg" title="Hello World">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Hello World</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;Y1CBXqgeokEs457.jpg" title="PE文件笔记1">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PE文件笔记1</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
 
         </div>
         <div id="sidebar">
@@ -128,6 +255,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#dll%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text"> dll 注入</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -167,10 +295,12 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 
   <ul id="quick">
     <li class="prev pjax">
+        <a href="/2023/06/06/hello-world/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
+        <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -194,7 +324,34 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="PE自动写入代码">PE自动写入代码</a></span>
+    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="PE文件笔记2">PE文件笔记2</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/z3/" title="z3简单学习">z3简单学习</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/06/hello-world/" title="Hello World">Hello World</a></span>
   </li>
 
       
@@ -212,25 +369,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="小拓展之信道">小拓展之信道</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2023/06/07/Linux/" title="Linux命令小全">Linux命令小全</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/z3/" title="z3简单学习">z3简单学习</a></span>
   </li>
 
       
@@ -257,7 +396,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="PE文件笔记2">PE文件笔记2</a></span>
+    <span><a href="/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="小拓展之信道">小拓展之信道</a></span>
   </li>
 
       
@@ -266,16 +405,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/06/hello-world/" title="Hello World">Hello World</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
+    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="PE自动写入代码">PE自动写入代码</a></span>
   </li>
 
   </ul>
@@ -306,7 +436,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'categories/',
+    path: '2023/06/07/dll注入/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"

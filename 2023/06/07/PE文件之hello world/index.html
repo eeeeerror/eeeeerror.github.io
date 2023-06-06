@@ -1,0 +1,600 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="eeeeerror" href="http://eeeeerror.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="eeeeerror" href="http://eeeeerror.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="eeeeerror" href="http://eeeeerror.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://eeeeerror.github.io/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/">
+
+
+
+  <title>
+PE文件笔记2 |
+eeeeerror的博客 = eeeeerror = miss u</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">PE文件笔记2
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-06-07 00:20:23">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-07T00:20:23+08:00">2023-06-07</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">eeeeerror的博客</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://eeeeerror.github.io/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="eeeeerror">
+    <meta itemprop="description" content="miss u, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="eeeeerror">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h4 id="一些陌生的项目"><a class="markdownIt-Anchor" href="#一些陌生的项目">#</a> 一些陌生的项目</h4>
+<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029960.png" alt="image-20230327210604480"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029279.png" alt="image-20230327210706166"></p>
+<h5 id="1usedbytesinthelastpage"><a class="markdownIt-Anchor" href="#1usedbytesinthelastpage">#</a> 1.<strong>&quot;UsedBytesInTheLastPage&quot;</strong></h5>
+<p>是 Windows 操作系统中的一个系统信息项，表示最后一页（页大小通常为 4KB）中实际使用的字节数。</p>
+<p>这个信息可以通过系统调用 API 来获取，例如<strong> GetProcessMemoryInfo</strong> 函数可以获取当前进程的内存使用情况，其中就包括了 UsedBytesInTheLastPage。在任务管理器中也可以查看到每个进程的 “最后一页的使用” 信息。</p>
+<h5 id="2initialsp"><a class="markdownIt-Anchor" href="#2initialsp">#</a> 2.<strong>&quot;InitialSP&quot;</strong></h5>
+<p>通常指的是程序在执行之前栈顶指针的初始值，也称为<strong>初始堆栈指针</strong>。在一个程序的运行过程中，栈是用来存放局部变量、函数调用、函数返回值等信息的数据结构，而初始堆栈指针则是指向栈顶位置的指针。</p>
+<p>在 x86 架构的 CPU 中，栈是由 CPU 硬件直接支持的，通常在程序加载时，操作系统会为该程序分配一段连续的内存空间作为栈空间。通过设置初始堆栈指针的值，可以指定程序的栈空间起始地址及其大小，在程序运行时，将栈顶指针不断移动，即可实现栈的正常使用。</p>
+<p>在汇编语言中，可以通过设置 <strong>SP 寄存器（Stack Pointer，栈指针）的值来控制初始堆栈指针的值</strong>。</p>
+<h5 id="3addressofnewexeheader"><a class="markdownIt-Anchor" href="#3addressofnewexeheader">#</a> 3.<strong>&quot;AddressOfNewExeHeader&quot;</strong></h5>
+<p>是 Windows PE 文件格式中 Optional Header 的一个字段，它存储了在内存中加载 PE 文件时，PE 头的位置信息。该字段指定了文件在被映射到内存后所使用的 <strong>PE 头的虚拟地址（VA）</strong>，同时也用于确定代码执行的入口点。</p>
+<p><strong>在程序启动时，Windows 操作系统会将 PE 文件映射到进程的虚拟地址空间中，并创建一个进程环境块（PEB）以跟踪该进程的状态。在映射 PE 文件时，Windows 会从 PE 文件中读取 Optional Header 中的 AddressOfNewExeHeader 字段，把其值加上基址作为 PE 头的虚拟地址（VA），然后将该 VA 映射到进程的虚拟地址空间中</strong>。</p>
+<p>在执行 PE 文件时，Windows 会根据 Optional Header 中的 ImageBase 字段加载并执行代码，该字段指定了 PE 文件映射到进程的虚拟地址空间中的基地址。执行过程中，Windows 通过 AddressOfEntryPoint 字段定位程序入口点，开始执行程序逻辑。</p>
+<p>对于未映射到内存的 PE 文件，AddressOfNewExeHeader 没有<s>意义</s>。</p>
+<p>如果修改了 PE 文件的 Optional Header 中的 AddressOfNewExeHeader 字段值，那么在文件被映射到进程的虚拟地址空间时，PE 头的实际地址就会被修改。这将导致 Windows 操作系统无法正确加载并执行程序，因为操作系统会试图在 PE 头的错误位置读取和解析 PE 头数据，从而导致程序崩溃或出现其他未知的行为。</p>
+<p>此外，在 PE 文件映射到内存时，如果 PE 头的实际地址与加载器（如 rundll32.exe）所期望的地址不一致，会触发 Windows 中的 DEP 保护机制（Data Execution Prevention），导致程序无法正常执行。</p>
+<p>因此，修改 PE 文件的 AddressOfNewExeHeader 字段值是<strong>非常危险的，并且很容易破坏程序的完整性和可靠性</strong>。只有在特定情况下、并且确切知道修改的含义和影响的情况下才应该进行此类操作。</p>
+<h5 id="35this-program-cannot-be-run-in-dos"><a class="markdownIt-Anchor" href="#35this-program-cannot-be-run-in-dos">#</a> 3.5**“This program cannot be run in DOS”**</h5>
+<p>是一个常见的错误提示，通常出现在尝试在 MS-DOS 或早期版本的 Windows 中运行 16 位或 32 位的 Win32 应用程序（例如 Windows 应用程序或驱动程序）时。</p>
+<p>其原因是这些应用程序依赖于 Windows 操作系统中的功能，而 MS-DOS 和早期版本的 Windows （如 Windows 3.x）并不支持这些功能。因此，在这些操作系统中尝试运行这些应用程序时，都会收到类似 “该程序无法在 MS-DOS 模式下运行” 的错误提示。</p>
+<p>另一方面，Windows 操作系统中的 PE 文件格式也使用 “MZSignature” 标识和 DOS 头部，以支持早期的 MS-DOS 可执行文件格式，并向后兼容。当在 MS-DOS 或早期版本的 Windows 中尝试运行 PE 格式的可执行文件时，Windows 会显示 “该程序无法在 MS-DOS 模式下运行” 的错误提示，提示用户该程序需要运行在 Windows 操作系统中才能正常工作</p>
+<h5 id="4addressofrelocationtable"><a class="markdownIt-Anchor" href="#4addressofrelocationtable">#</a> 4.<strong>&quot;AddressOfRelocationTable&quot;</strong></h5>
+<p>是 Windows PE 文件格式中可选头部（Optional Header）的一个字段，<strong>它保存了标记所有需要重定位的代码和数据段的修正项数组相对于映像基址（Image Base）的偏移量</strong>。Windows 在将 PE 文件加载到内存时，会根据这个字段指定的地址将修正项数组加载到内存中进行动态地址重定位。</p>
+<p>PE 文件格式通常将代码、数据和重定位信息分开存储，其中重定位信息用来告诉操作系统在映射代码和数据段时，哪些地址需要进行修正。AddressOfRelocationTable 字段指定了修正项数组的起始地址，并通过 VirtualSize 字段指定了修正项数组的大小。</p>
+<p>动态地址重定位是一种机制，在加载 PE 文件时动态修改代码和数据段的内存地址，确保它们在内存中都是有效的。这通常在 PE 文件被加载到一个不同的内存地址时需要执行，因为 PE 文件的绝对地址通常是固定的，不同的位置可能会导致代码和数据段地址失效。</p>
+<p>如果 AddressOfRelocationTable 字段中的地址无效或修正项数组中的偏移量无法被应用到正确的地址上，则应用程序可能无法正确加载，导致运行错误或崩溃。</p>
+<h5 id="45image-base"><a class="markdownIt-Anchor" href="#45image-base">#</a> 4.5&quot;Image Base&quot;</h5>
+<p>在 Windows PE 文件格式中，PE 头和可选头描述了 PE 文件的各种属性，其中可选头包括 Image Base 字段。Image Base 是一个指针，指向 PE 文件在内存中加载时所分配的基地址。当 PE 文件被映射到进程地址空间中时，使用该基地址来计算每个节在内存中所占用的地址范围。</p>
+<p><strong>PE 文件的 Image Base 值位于可选头的第 15 个字节处</strong>，对应于 IMAGE_OPTIONAL_HEADER 结构体中的 ImageBase 字段。在 32 位 PE 文件中，Image Base 通常为 0x00400000；在 64 位 PE 文件中，Image Base 通常为 0x0000000140000000。</p>
+<p>需要注意的是，Image Base 值必须是一个页对齐的地址，因为 Windows 操作系统以页为单位进行内存映射，如果 Image Base 值不是页对齐的，则可能会导致性能损失或者其他问题。因此，在创建 PE 文件时，应该指定合适的 Image Base 值，并且确保它是一个页对齐的地址。</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029222.png" alt="image-20230327214119200"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029720.png" alt="image-20230327214326945"></p>
+<h5 id="5signature"><a class="markdownIt-Anchor" href="#5signature">#</a> 5.Signature</h5>
+<p>就是 PE：4550h</p>
+<h1 id="小插曲"><a class="markdownIt-Anchor" href="#小插曲">#</a> 小插曲</h1>
+<h5 id="455"><a class="markdownIt-Anchor" href="#455">#</a> 4.55</h5>
+<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029054.png" alt="image-20230327214732555"></p>
+<p>MB_OK 是一个宏定义，代表 Windows 消息框中的 “确定” 按钮。当按下 “确定” 按钮时，消息框会关闭并返回一个指定值。它通常用在 MessageBox 函数中作为第二个参数。</p>
+<p>MessageBox 是 Windows API 中一个常用的函数，用于显示一个消息框，并等待用户响应。它通常用于向用户展示一些提示信息，让用户进行选择或确认操作。MessageBox 函数的常见用法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int MessageBox(</span><br><span class="line">  HWND    hWnd,           // 父窗口的句柄</span><br><span class="line">  LPCTSTR lpText,         // 显示文本</span><br><span class="line">  LPCTSTR lpCaption,      // 标题文本</span><br><span class="line">  UINT    uType           // 消息框样式</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>其中，uType 参数指定了需要显示哪种类型的消息框，包括：</p>
+<ul>
+<li>MB_OK：显示一个带有 “确定” 按钮的消息框。</li>
+<li>MB_OKCANCEL：显示一个带有 “确定” 和 “取消” 按钮的消息框。</li>
+<li>MB_YESNO：显示一个带有 “是” 和 “否” 按钮的消息框。</li>
+<li>MB_ABORTRETRYIGNORE：显示一个带有 “中止”、“重试” 和 “忽略” 按钮的消息框。</li>
+<li>MB_RETRYCANCEL：显示一个带有 “重试” 和 “取消” 按钮的消息框。</li>
+</ul>
+<p>等等。</p>
+<p>当用户按下消息框中的按钮时，MessageBox 函数会返回一个整数值，表示用户的响应结果。例如，如果用户按下 “确定” 按钮，则返回值为 IDOK，如果用户按下 “取消” 按钮，则返回值为 IDCANCEL。</p>
+<h1 id="节表的一些奇奇怪怪的东西"><a class="markdownIt-Anchor" href="#节表的一些奇奇怪怪的东西">#</a> 节表的一些奇奇怪怪的东西</h1>
+<h5 id="1rdata"><a class="markdownIt-Anchor" href="#1rdata">#</a> <strong>1.rdata</strong></h5>
+<p>是 PE 文件（Portable Executable File）中的一个节区（Section），<strong>用于存储只读数据，通常包括字符串、常量、程序中使用的各种资源等</strong>。这些数据在程序运行期间不能被修改，因此它们会被放在只读节区，以确保数据的安全性。</p>
+<p>一般来说，.rdata 节区是由编译器自动生成的，开发者可以向其中添加常量和字符串等只读数据。在程序运行期间，这些数据可以通过指针进行访问，但是不能直接修改。<strong>如果程序需要修改这些数据，那么它们应该被放在其他节区中，例如 .data 节区或 .bss 节区。</strong></p>
+<p>需要注意的是，虽然 .rdata 节区中的数据是只读的，但是它们<strong>并不是加密</strong>的，因此这些数据仍然可以被恶意攻击者读取和利用。为了提高程序的安全性，在处理敏感数据时应该采取额外的安全措施，例如使用加密算法对数据进行加密，以防止数据泄露和篡改。</p>
+<h5 id="2text"><a class="markdownIt-Anchor" href="#2text">#</a> 2.text</h5>
+<p>.text 是 PE 文件（Portable Executable File）中的一个节区（Section），<strong>用于存储程序的可执行代码</strong>。在程序运行期间，操作系统会把 .text 节区中的指令加载到内存中，并按照顺序逐条执行，从而实现程序的功能。</p>
+<p>一般来说，.text 节区中的代码是由编译器生成的汇编代码，它们经过了链接器和优化器的处理，以提高程序的执行效率。对于不同的 CPU 架构和操作系统，.text 节区中的代码格式也不一样，例如 Windows 上的 x86 架构程序使用的是 PE 文件格式，而 Linux 上的 x86 架构程序使用的是 ELF 文件格式。</p>
+<p>需要注意的是，虽然 .text 节区中的代码是只读的，但是它们并不是加密的，因此这些代码仍然可以被恶意攻击者读取和利用，例如反汇编、调试等操作。为了提高程序的安全性，在处理机密信息时应该采取更加安全的方式，例如使用加密算法对数据进行加密，或者在代码中添加防抄袭措施，以避免代码被盗用和篡改。</p>
+<h5 id="3pdata"><a class="markdownIt-Anchor" href="#3pdata">#</a> 3.pdata</h5>
+<p>.pdata 是一种在 Windows 操作系统中用于<strong>存储异常处理程序信息</strong>的节 (section)。.pdata 节中包含了<strong>特定函数的代码范围和其异常处理器的指针</strong>，当发生异常时，程序可以通过.pdata 节中的信息来找到相应的异常处理器。该节通常出现在可执行文件 (.exe) 或动态链接库 (.dll) 中的代码段。</p>
+<h5 id="4rsrc"><a class="markdownIt-Anchor" href="#4rsrc">#</a> 4.rsrc</h5>
+<p>.rsrc 是一种在 Windows 操作系统中用于<strong>存储异常处理程序信息的 (section)</strong>。.rsrc 节通常出现在可执行文件 (.exe) 或动态链接库 (.dll) 中，它包含了程序使用的各种资源，例如<strong>图标、对话框、菜单、位图、字符串等等</strong>。这些资源可以通过程序代码来访问，也可以通过应用程序编程接口 (API) 函数来访问。在 Windows 开发中，使用资源管理器 (Resource Editor) 工具可以方便地编辑.rsrc 节中的资源信息。</p>
+<h5 id="5reloc"><a class="markdownIt-Anchor" href="#5reloc">#</a> 5.reloc</h5>
+<p>.reloc 是一种在 Windows 操作系统中用于<strong>存储地址重定位信息的节 (section)</strong>。在 Windows PE 文件中，代码和数据通常使用相对虚拟地址 (RVA，Relative Virtual Address) 来表示，但是当可执行文件或动态链接库被装载到不同的内存地址时，这些地址需要进行重新定位。<strong>.reloc 节中包含了程序需要重定位的各种地址信息</strong>，当程序加载到内存时，系统会根据.reloc 节中的信息重新计算地址，并对程序进行重定位，使得程序可以在新的内存地址上正确地运行。</p>
+<h5 id="6idata"><a class="markdownIt-Anchor" href="#6idata">#</a> 6.idata</h5>
+<p>.idata 是一种在 Windows 操作系统中用于<strong>存储导入表 (import table) 信息</strong>的节 (section)。在可执行文件 (.exe) 或动态链接库 (.dll) 中，如果需要使用其他 DLL 库中的函数，就需要在程序中建立对这些 DLL 库的引用，并在运行时将它们加载到内存当中。<strong>.idata 节中包含了程序依赖的各个 DLL 库的名称、函数名称以及函数地址等信息</strong>。在程序运行时，系统会根据.idata 节中的信息，将所需的 DLL 库加载到内存中，并将相应的函数地址填充到程序代码中，使得程序可以正确地调用这些函数。</p>
+<h5 id="7msvcjmc"><a class="markdownIt-Anchor" href="#7msvcjmc">#</a> 7.msvcjmc</h5>
+<p><strong>msvcjmc 是一种 Microsoft Visual Studio 的组件</strong>，它提供了用于性能分析和调试的工具和库。该组件包含 Profile Guided Optimization (PGO) 和 CPU Sampling 功能。PGO 可以帮助开发人员优化应用程序的代码执行路径，从而提高程序的性能。CPU Sampling 功能则可以帮助开发人员识别并解决应用程序中的性能问题。msvcjmc 通常用于 Windows 开发环境中，可以与 Visual Studio 一起使用。</p>
+<h5 id="800cfg"><a class="markdownIt-Anchor" href="#800cfg">#</a> 8.00cfg</h5>
+<p>.00cfg 是一种在 Windows 操作系统中用于存储控制流完整性 (CFI, Control Flow Integrity) 检测信息的节 (section)。<strong>CFI 是一种安全机制，可以防止攻击者利用控制流劫持漏洞 (control-flow hijacking vulnerability) 来改变程序的正常执行流程，从而实施恶意攻击</strong>。.00cfg 节中包含了程序在运行时对控制流的检测信息，<strong>包括函数调用、跳转目标、返回地址等等</strong>。当程序运行时，系统会根据.00cfg 节中的信息进行控制流的验证，确保程序的执行流程不受恶意攻击的影响。</p>
+<h1 id="节表"><a class="markdownIt-Anchor" href="#节表">#</a> 节表</h1>
+<h5 id="1virtualsize"><a class="markdownIt-Anchor" href="#1virtualsize">#</a> 1.virtualSize</h5>
+<p>文件对齐后的节尺寸可以通过这个算出来</p>
+<h5 id="2virtualaddress"><a class="markdownIt-Anchor" href="#2virtualaddress">#</a> 2.VirtualAddress</h5>
+<p>本节的相对虚拟地址 pe 文件在映射内存会读取本值</p>
+<h5 id="3sizeofrawdata"><a class="markdownIt-Anchor" href="#3sizeofrawdata">#</a> 3.SizeOfRawData</h5>
+<p>经过文件对齐后的节尺寸</p>
+<h5 id="4pointertorawdata"><a class="markdownIt-Anchor" href="#4pointertorawdata">#</a> 4.PointerToRawData</h5>
+<p>本节在文件中的地址，（很重要）</p>
+<h5 id="5pointertorelocatinos"><a class="markdownIt-Anchor" href="#5pointertorelocatinos">#</a> 5.PointerToRelocatinos</h5>
+<p>PE 文件在调入内存后该节的存放位置</p>
+<p>流程</p>
+<p>1 先通过 Numberofsections 知道节区数</p>
+<p>2. 通过 SizeofHeader 知道节表的偏移量</p>
+<p>3. 遍历知道值</p>
+<p>4. 通过 Pointofrawdata 知道地址，Sizeofrawdata 知道对齐后的尺寸</p>
+<p>rva+base 定位到内存</p>
+<p>5 设置 character 的值</p>
+<p>6 一个一个处理就完成了</p>
+<h1 id="重定位"><a class="markdownIt-Anchor" href="#重定位">#</a> 重定位</h1>
+<p>1. 病毒的重定位技术</p>
+<p>​    病毒的重定位技术应该也算是最基本和最有用的技术之一了，其实重定位技术只要是对外壳开发比较熟悉的朋友都应该很熟悉了。重定位顾名思义重新定位地址。上篇文章中我们已经讲解到了由于我们被感染对象的不同，我们部分定义的变量被插入的地址也不同。所以这就需要我们重新定位，也就是今天的主题 —— 重定位技术。</p>
+<p>​    首先我们来看</p>
+<p>假如我们定义一段变量</p>
+<pre><code>szText    db 'Virus Dels Demo', 0
+</code></pre>
+<p>​    假设我们这个变量在我们病毒体的地址是 00403201h, 那么我们插入到被感染对象后这个变量的地址是 00408602h。那么我们如何能让我们的病毒体代码在运行时期来计算到被插入被感染对象后变量的地址呢？<br>
+​<br>
+​    我们思索下是否能找到一些固定的地方。有时候换位思考是很不错的，我们病毒体既然被插入的地址是不固定的，那么病毒体的一些绝对偏移它相对病毒体的偏移肯定是固定的吧。<br>
+​<br>
+​    假设一个病毒的起始位置是 00400021h, 那么它插入到被感染对象后的位置是 00500021h, 那么我们是不是只要知道一个变量相对于我们病毒起始位置的偏移就可以求得这个变量插入后的位置了？</p>
+<p>​    比如我们的 szText 变量相对于病毒起始位置的偏移是 9h, 那么只要通过求得病毒插入到被感染对象后的病毒起始位置 + 这个变量相对病毒起始位置的偏移 = 变量在被感染对象中的位置。</p>
+<p>​    是不是很好理解？</p>
+<p>​    继续思索:</p>
+<p>​    我们如何求病毒被插入感染对象后的起始位置，它是可变的。<br>
+​<br>
+​    我们来看一下 call 指令，call 指令是将下一句指令的偏移压入堆栈，然后设置 eip 寄存器指向要跳转的地址。</p>
+<p>​    看以下代码:<br>
+​    00401010 &gt;/$ E8 00000000  ;call    00401015<br>
+​    00401015 |$ 5B        ;pop       ebx<br>
+​<br>
+​     就如这段代码 call 指令首先将下一句指令的地址 00401015h 压入堆栈，然后将 eip 寄存器指向 00401015h。</p>
+<p>病毒技术中 call 指令详解:</p>
+<p>​    我们都知道 call 调用一个内存地址的话，编译器编译的是相对于调用地址的偏移 (注意：这里不是绝对偏移，相对偏移)，求调用地址的公式是调用地址 - (call 指令所处偏移 +5) = 相对偏移</p>
+<p>​    如上面这段代码，假设我们的代码是 call 00401016 的话，那么编译器会将机器码编译为 E8 00000001 。 E8 为 call 对应的机器码。 00000001 为偏移差，不懂自己根据上面的公式算算。</p>
+<p>​    我想大家看到这点应该明白我讲解 call 指令的作用了吧。。 因为 call 是将下句指令偏移压入堆栈，然后设置 eip 寄存器为调用地址。所以我们只要在调用地址中取得堆栈中 4 字节数据则为下句指令的偏移。</p>
+<p>​    这句代码执行的到 00401015 处通过 pop ebx 取得堆栈中 4 字节的数据 (这 4 字节数据则为 call 地址所处位置下句指令偏移地址，也就是 pop ebx 指令的地址)。通过这个地址我们就可以把它参照（就相当于上面所说的把它相当于病毒的起始地址），这样我们后面任何绝对地址均采用 这个地址 + 绝对地址相对这个地址的偏移 来取得真正的地址。说起来有些绕口，不过的确是这么个意思。初学者可以多读读理解下。</p>
+<p>​    这里很多不了解基础的人，写代码总是开始 E8 00000000</p>
+<p>​    其实你可以调用其他的地址，然后在其后写一些垃圾代码防止杀软的查杀。然后只要把下句指令偏移作为参照就行了。</p>
+<p>​    看代码。</p>
+<p>​        szText    db    ‘Virus Dels Demo’, 0<br>
+​<br>
+​    __Entry:<br>
+​        call    Dels2<br>
+​     Dels:<br>
+​        int    3<br>
+​        int    3<br>
+​     Dels2:<br>
+​        pop    ebx<br>
+​        lea    edx, [ebx + szText - Dels] ; edx = szText<br>
+​        ret<br>
+​</p>
+<p>​    代码很简单很好理解，通过调用 call dels, 然后通过 pop ebx 获得 dels 的偏移，然后通过 szText - Dels 获得 szText 变量基于 Dels 的相对偏移，然后在 + dels (ebx) = 重定位后的偏移。</p>
+<p>​    如果您能看到这里，我想您已经是基本理解了。其实就是这么简单，找一个能在运行时计算出来的地址，然后 + 上相对它的偏移则为重定位后的地址。主要思路就是这样，至于如何发挥就是大家的事情了，您可以发挥你的创造力来变形你的重定位代码，任何技术都是基础。。</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-06-07 00:29:54" itemprop="dateModified" datetime="2023-06-07T00:29:54+08:00">2023-06-07</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="eeeeerror 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="eeeeerror 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="eeeeerror 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>eeeeerror <i class="ic i-at"><em>@</em></i>eeeeerror
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://eeeeerror.github.io/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="PE文件笔记2">http://eeeeerror.github.io/2023/06/07/PE文件之hello world/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;HKyzSd7NI3mlBpt.jpg" title="PE文件笔记1">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PE文件笔记1</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;Z5W6r2BSoiThHG1.jpg" title="PE自动写入代码">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PE自动写入代码</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%99%8C%E7%94%9F%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text"> 一些陌生的项目</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1usedbytesinthelastpage"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.&quot;UsedBytesInTheLastPage&quot;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2initialsp"><span class="toc-number">1.2.</span> <span class="toc-text"> 2.&quot;InitialSP&quot;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3addressofnewexeheader"><span class="toc-number">1.3.</span> <span class="toc-text"> 3.&quot;AddressOfNewExeHeader&quot;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#35this-program-cannot-be-run-in-dos"><span class="toc-number">1.4.</span> <span class="toc-text"> 3.5**“This program cannot be run in DOS”**</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4addressofrelocationtable"><span class="toc-number">1.5.</span> <span class="toc-text"> 4.&quot;AddressOfRelocationTable&quot;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#45image-base"><span class="toc-number">1.6.</span> <span class="toc-text"> 4.5&quot;Image Base&quot;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5signature"><span class="toc-number">1.7.</span> <span class="toc-text"> 5.Signature</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E6%8F%92%E6%9B%B2"><span class="toc-number"></span> <span class="toc-text"> 小插曲</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#455"><span class="toc-number">0.1.</span> <span class="toc-text"> 4.55</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%8A%82%E8%A1%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="toc-number"></span> <span class="toc-text"> 节表的一些奇奇怪怪的东西</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1rdata"><span class="toc-number">0.1.</span> <span class="toc-text"> 1.rdata</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2text"><span class="toc-number">0.2.</span> <span class="toc-text"> 2.text</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3pdata"><span class="toc-number">0.3.</span> <span class="toc-text"> 3.pdata</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4rsrc"><span class="toc-number">0.4.</span> <span class="toc-text"> 4.rsrc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5reloc"><span class="toc-number">0.5.</span> <span class="toc-text"> 5.reloc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6idata"><span class="toc-number">0.6.</span> <span class="toc-text"> 6.idata</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7msvcjmc"><span class="toc-number">0.7.</span> <span class="toc-text"> 7.msvcjmc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#800cfg"><span class="toc-number">0.8.</span> <span class="toc-text"> 8.00cfg</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%8A%82%E8%A1%A8"><span class="toc-number"></span> <span class="toc-text"> 节表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1virtualsize"><span class="toc-number">0.1.</span> <span class="toc-text"> 1.virtualSize</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2virtualaddress"><span class="toc-number">0.2.</span> <span class="toc-text"> 2.VirtualAddress</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3sizeofrawdata"><span class="toc-number">0.3.</span> <span class="toc-text"> 3.SizeOfRawData</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4pointertorawdata"><span class="toc-number">0.4.</span> <span class="toc-text"> 4.PointerToRawData</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5pointertorelocatinos"><span class="toc-number">0.5.</span> <span class="toc-text"> 5.PointerToRelocatinos</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E4%BD%8D"><span class="toc-number"></span> <span class="toc-text"> 重定位</span></a>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="eeeeerror"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">eeeeerror</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">10</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="PE自动写入代码">PE自动写入代码</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="PE文件笔记2">PE文件笔记2</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/06/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/Linux/" title="Linux命令小全">Linux命令小全</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" title="PE文件笔记1">PE文件笔记1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令">花指令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/z3/" title="z3简单学习">z3简单学习</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="小拓展之信道">小拓展之信道</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/SMC/" title="SMC">SMC</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">eeeeerror @ eeeeerror的博客</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/06/07/PE文件之hello world/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
