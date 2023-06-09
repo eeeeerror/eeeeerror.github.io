@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
         </ul>
       </div>
     </header>
@@ -120,7 +120,39 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" itemprop="url" title="dll注入"><img data-src="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></a>
+    <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="PE文件笔记1"><img data-src="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-06-07 00:20:20">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-07T00:20:20+08:00">2023-06-07</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="PE文件笔记1">PE文件笔记1</a></h3>
+    <div class="excerpt">
+        # PE 文件
+# 基本结构
+Dos 头到节区头是 PE 头的部分，其下的节区是 PE 头部分合称 PE 体
+文件的偏移，内存中使用使用 VA（虚拟地址）来表示位置，文件加载到内存时，情况会发生变化，文件的内容一般分为代码（.text), 数据（data），资源节（rsrc）。
+# VA&amp;amp;RVA
+VA：虚拟内存地址
+RVA：相对虚拟地址即相对于基地址的偏移地址
+RVA+ImageBase=VA
+使用这种的方法原因：PE 文件被加载到进程时（特别是 dll），加载到进程虚拟内存时的特定位置时，有可能已经加载了其他的文件，此时必须要使用重定位将其加载到空白位置，如果 PE...
+    </div>
+    <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="PE文件笔记1" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" itemprop="url" title="dll注入"><img data-src="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></a>
   </div>
   <div class="info">
     
@@ -150,7 +182,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/06/hello-world/" itemprop="url" title="Hello World"><img data-src="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></a>
+    <a href="/2023/06/06/hello-world/" itemprop="url" title="Hello World"><img data-src="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></a>
   </div>
   <div class="info">
     
@@ -211,7 +243,7 @@ More info: Writing
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">12</span>
+        <span class="count">13</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -262,33 +294,6 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/SMC/" title="SMC">SMC</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="PE自动写入代码">PE自动写入代码</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" title="PE文件笔记1">PE文件笔记1</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
   </li>
 
@@ -298,7 +303,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/08/easyre/" title="CTF1">CTF1</a></span>
+    <span><a href="/2023/06/09/GUET-CTF2019-re/" title="GUET-CTF2019 re">GUET-CTF2019 re</a></span>
   </li>
 
       
@@ -307,16 +312,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/06/hello-world/" title="Hello World">Hello World</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令">花指令</a></span>
+    <span><a href="/2023/06/07/Linux/" title="Linux命令小全">Linux命令小全</a></span>
   </li>
 
       
@@ -334,7 +330,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/z3/" title="z3简单学习">z3简单学习</a></span>
+    <span><a href="/2023/06/07/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令">花指令</a></span>
   </li>
 
       
@@ -343,7 +339,43 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/Linux/" title="Linux命令小全">Linux命令小全</a></span>
+    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="PE自动写入代码">PE自动写入代码</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="小拓展之信道">小拓展之信道</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" title="PE文件笔记1">PE文件笔记1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/08/easyre/" title="CTF1">CTF1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="PE文件笔记2">PE文件笔记2</a></span>
   </li>
 
   </ul>
