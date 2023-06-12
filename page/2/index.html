@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
         </ul>
       </div>
     </header>
@@ -120,22 +120,23 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="PE文件笔记1"><img data-src="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></a>
+    <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="re"><img data-src="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></a>
   </div>
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="创建时间：2023-06-07 00:20:20">
+  <span class="item" title="创建时间：2023-06-12 22:37:06">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-06-07T00:20:20+08:00">2023-06-07</time>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-12T22:37:06+08:00">2023-06-12</time>
   </span>
 </div>
 
-    <h3><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="PE文件笔记1">PE文件笔记1</a></h3>
+    <h3><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="re">re</a></h3>
     <div class="excerpt">
-        # PE 文件
+        title: pe 文件
+# PE 文件
 # 基本结构
 Dos 头到节区头是 PE 头的部分，其下的节区是 PE 头部分合称 PE 体
 文件的偏移，内存中使用使用 VA（虚拟地址）来表示位置，文件加载到内存时，情况会发生变化，文件的内容一般分为代码（.text), 数据（data），资源节（rsrc）。
@@ -143,31 +144,142 @@ Dos 头到节区头是 PE 头的部分，其下的节区是 PE 头部分合称 P
 VA：虚拟内存地址
 RVA：相对虚拟地址即相对于基地址的偏移地址
 RVA+ImageBase=VA
-使用这种的方法原因：PE 文件被加载到进程时（特别是 dll），加载到进程虚拟内存时的特定位置时，有可能已经加载了其他的文件，此时必须要使用重定位将其加载到空白位置，如果 PE...
+使用这种的方法原因：PE 文件被加载到进程时（特别是...
     </div>
-    <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="PE文件笔记1" class="btn">more...</a>
+    <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="re" class="btn">more...</a>
   </div>
 </article>
 
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" itemprop="url" title="dll注入"><img data-src="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></a>
+    <a href="/2023/06/12/jocker.exe/" itemprop="url" title="re"><img data-src="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></a>
   </div>
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="创建时间：2023-06-07 00:17:58">
+  <span class="item" title="创建时间：2023-06-12 22:37:06">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-06-07T00:17:58+08:00">2023-06-07</time>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-12T22:37:06+08:00">2023-06-12</time>
   </span>
 </div>
 
-    <h3><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" itemprop="url" title="dll注入">dll注入</a></h3>
+    <h3><a href="/2023/06/12/jocker.exe/" itemprop="url" title="re">re</a></h3>
     <div class="excerpt">
-        # dll 注入
+        title: joker
+jocker.exe
+声明
+这个题，分析了一下，两个知识，一个是栈指针修改，还有一个 smc 自修改（自修改的话，两种破法，一个是 idc 脚本，一个是动调）
+栈指针修改
+进入程序直接地址 0x401838 的 sp 指针（堆栈不平衡）报错，点击 options—&amp;gt;general—&amp;gt; 勾选 stack pointer，然后找到地址 0x401838，截图看看
+call 函数调用前后 栈顶指针 sp 位置不一样，可能吗？？？？？？？那栈怎么平衡？？？？详情请看...
+    </div>
+    <a href="/2023/06/12/jocker.exe/" itemprop="url" title="re" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/06/12/GUET-CTF2019-re/" itemprop="url" title="GUET-CTF2019 re"><img data-src="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-06-12 22:37:06">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-12T22:37:06+08:00">2023-06-12</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/06/12/GUET-CTF2019-re/" itemprop="url" title="GUET-CTF2019 re">GUET-CTF2019 re</a></h3>
+    <div class="excerpt">
+        # GUET-CTF2019 re
+先拖入 die 发现有 upx 的壳然后，使用工具就行了
+然后拖入 ida，搜索字符串
+发现 if 点进去看如何输出 correct 发现
+
+里面一堆 if 的判断大概就是 a 数组里面的存储的就是 flag 直接写代码跑
+结果就是 flag，但是里面有一个没给我是去网上看的
+    </div>
+    <a href="/2023/06/12/GUET-CTF2019-re/" itemprop="url" title="GUET-CTF2019 re" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/06/12/easyre/" itemprop="url" title="未命名"><img data-src="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-06-12 22:37:06">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-12T22:37:06+08:00">2023-06-12</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/06/12/easyre/" itemprop="url" title="未命名">未命名</a></h3>
+    <div class="excerpt">
+        # titel:CTF1
+# easyre
+拖入 ida
+
+# reverse1
+
+跟据代码可以知道是字符替换将 {hello_world} 的 0 和 o 替换。
+# reverse2
+
+和一一样
+# 内涵的软件
+
+好像要脱壳，后面写的搞忘了，flag 写脸上了
+# 新年快乐
+
+去壳开启异世界大门
+# reverse3
+
+base64 上面说了但我没截到 tut
+# 不一样的 flag
+迷宫
+
+写的很清楚
+# SimpleRev
+
+先进入 Decry 函数看见几个拼接这个读进去是直接读入的，但是在里面存储时是小端序，所以拼接时要调一下，下面懒得思考直接穷举
+#...
+    </div>
+    <a href="/2023/06/12/easyre/" itemprop="url" title="未命名" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/06/12/dll%E6%B3%A8%E5%85%A5/" itemprop="url" title="re"><img data-src="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-06-12 22:37:06">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-12T22:37:06+08:00">2023-06-12</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/06/12/dll%E6%B3%A8%E5%85%A5/" itemprop="url" title="re">re</a></h3>
+    <div class="excerpt">
+        title: dll 注入
+# dll 注入
 一。什么是 dll
 ​	动态链接库，是微软公司在微软 windows 操作系统中，实现共享函数库概念的一种方式，库函数的扩展名是。dll，ocx 或者.drv
 二。为何要有 dll
@@ -175,36 +287,35 @@ RVA+ImageBase=VA
 三。什么是 dll 注入
 ​	我们可以利用 dll 的机制让 a 程序强行执行 b 给定的的 dll 库，达到 a 进程控制 b 进程的目的
     </div>
-    <a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" itemprop="url" title="dll注入" class="btn">more...</a>
+    <a href="/2023/06/12/dll%E6%B3%A8%E5%85%A5/" itemprop="url" title="re" class="btn">more...</a>
   </div>
 </article>
 
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/06/hello-world/" itemprop="url" title="Hello World"><img data-src="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></a>
+    <a href="/2023/06/08/CrackRTF/" itemprop="url" title="CrackRTF"><img data-src="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></a>
   </div>
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="创建时间：2023-06-06 18:34:18">
+  <span class="item" title="创建时间：2023-06-08 08:52:41">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-06-06T18:34:18+08:00">2023-06-06</time>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-08T08:52:41+08:00">2023-06-08</time>
   </span>
 </div>
 
-    <h3><a href="/2023/06/06/hello-world/" itemprop="url" title="Hello World">Hello World</a></h3>
+    <h3><a href="/2023/06/08/CrackRTF/" itemprop="url" title="CrackRTF">CrackRTF</a></h3>
     <div class="excerpt">
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-# Quick Start
-# Create a new post
-1$ hexo new &amp;quot;My New Post&amp;quot;
-More info: Writing
-# Run...
+        # CrackRTF
+
+大致明白需要输入两次，后与图中的两个字符串按顺序比较，第一次输入时先判断字符串个数是否为 6，然后 atoi 函数对我们的字符串进行处理后与 100000 进行比较，大概知道 atoi 是将字符串化为整形，然后在我们输入的字符串后面加上 @DBApp，后使用函数 sub—40100 进行处理跟进看一下
+
+看不懂，不过大概能看到 Crypt，hash 之类的，网上搜知道是转换为 hash 值的函数，crypthashcreat 中的 0x8004u 是 sha-1 的加密，大概就是拼接字符串通过 sha-1 转换为 hash...
     </div>
-    <a href="/2023/06/06/hello-world/" itemprop="url" title="Hello World" class="btn">more...</a>
+    <a href="/2023/06/08/CrackRTF/" itemprop="url" title="CrackRTF" class="btn">more...</a>
   </div>
 </article>
 
@@ -243,7 +354,7 @@ More info: Writing
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">13</span>
+        <span class="count">16</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -294,7 +405,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
+    <span><a href="/2023/06/12/dll%E6%B3%A8%E5%85%A5/" title="re">re</a></span>
   </li>
 
       
@@ -303,7 +414,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/09/GUET-CTF2019-re/" title="GUET-CTF2019 re">GUET-CTF2019 re</a></span>
+    <span><a href="/2023/06/12/GUET-CTF2019-re/" title="GUET-CTF2019 re">GUET-CTF2019 re</a></span>
   </li>
 
       
@@ -312,7 +423,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/Linux/" title="Linux命令小全">Linux命令小全</a></span>
+    <span><a href="/2023/06/12/%E5%88%AB%E4%BA%BA%E7%9A%84re%E7%AC%94%E8%AE%B0/" title="re">re</a></span>
   </li>
 
       
@@ -321,7 +432,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/08/CrackRTF/" title="CrackRTF">CrackRTF</a></span>
+    <span><a href="/2023/06/12/jocker.exe/" title="re">re</a></span>
   </li>
 
       
@@ -330,7 +441,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令">花指令</a></span>
+    <span><a href="/2023/06/12/SimpleRev/" title="re">re</a></span>
   </li>
 
       
@@ -339,7 +450,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="PE自动写入代码">PE自动写入代码</a></span>
+    <span><a href="/2023/06/12/easyre/" title="未命名">未命名</a></span>
   </li>
 
       
@@ -348,7 +459,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="小拓展之信道">小拓展之信道</a></span>
+    <span><a href="/2023/06/12/SMC/" title="未命名">未命名</a></span>
   </li>
 
       
@@ -357,7 +468,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" title="PE文件笔记1">PE文件笔记1</a></span>
+    <span><a href="/2023/06/12/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="re">re</a></span>
   </li>
 
       
@@ -366,7 +477,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/08/easyre/" title="CTF1">CTF1</a></span>
+    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="re">re</a></span>
   </li>
 
       
@@ -375,7 +486,7 @@ More info: Writing
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="PE文件笔记2">PE文件笔记2</a></span>
+    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" title="re">re</a></span>
   </li>
 
   </ul>

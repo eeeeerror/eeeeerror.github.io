@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="http://eeeeerror.github.io/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/">
+<link rel="canonical" href="http://eeeeerror.github.io/2023/06/12/%E5%8F%8C%E4%BF%A1%E9%81%93/">
 
 
 
   <title>
-小拓展之信道 |
+re |
 eeeeerror的博客 = eeeeerror = miss u</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +58,16 @@ eeeeerror的博客 = eeeeerror = miss u</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">小拓展之信道
+  <h1 itemprop="name headline">re
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2023-06-07 00:20:43">
+  <span class="item" title="创建时间：2023-06-12 22:37:06">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">发表于</span>
-    <time itemprop="dateCreated datePublished" datetime="2023-06-07T00:20:43+08:00">2023-06-07</time>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-12T22:37:06+08:00">2023-06-12</time>
   </span>
 </div>
 
@@ -100,12 +100,12 @@ eeeeerror的博客 = eeeeerror = miss u</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
         </ul>
       </div>
     </header>
@@ -134,7 +134,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
-  <link itemprop="mainEntityOfPage" href="http://eeeeerror.github.io/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/">
+  <link itemprop="mainEntityOfPage" href="http://eeeeerror.github.io/2023/06/12/%E5%8F%8C%E4%BF%A1%E9%81%93/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -149,7 +149,8 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="双信道"><a class="markdownIt-Anchor" href="#双信道">#</a> 双信道</h1>
+    <p>title: 双信道</p>
+<h1 id="双信道"><a class="markdownIt-Anchor" href="#双信道">#</a> 双信道</h1>
 <h1 id="linux管道pipe详解"><a class="markdownIt-Anchor" href="#linux管道pipe详解">#</a> linux 管道 pipe 详解</h1>
 <h1 id="管道"><a class="markdownIt-Anchor" href="#管道">#</a> <strong>管道</strong></h1>
 <h2 id="管道的概念"><a class="markdownIt-Anchor" href="#管道的概念">#</a> <strong>管道的概念：</strong></h2>
@@ -169,7 +170,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <p>int pipe (int pipefd [2]); 成功：0；失败：-1，设置 errno</p>
 <p>函数调用成功返回 r/w 两个文件描述符。无需 open，但需手动 close。规定：fd [0] → r； fd [1] → w，就像 0 对应标准输入，1 对应标准输出一样。向管道文件读写数据其实是在读写内核缓冲区。</p>
 <p>管道创建成功以后，创建该管道的进程（父进程）同时掌握着管道的读端和写端。如何实现父子进程间通信呢？通常可以采用如下步骤：</p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070030039.png" alt="img"></p>
+<p><img data-src="https://img-blog.csdn.net/20161223173958916" alt="img"></p>
 <p>\1. 父进程调用 pipe 函数创建管道，得到两个文件描述符 fd [0]、fd [1] 指向管道的读端和写端。</p>
 <p>\2. 父进程调用 fork 创建子进程，那么子进程也有两个文件描述符指向同一管道。</p>
 <p>\3. 父进程关闭管道读端，子进程关闭管道写端。父进程可以向管道中写入数据，子进程将管道中的数据读出。由于管道是利用环形队列实现的，数据从写端流入管道，从读端流出，这样就实现了进程间通信。</p>
@@ -211,7 +212,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-06-07 00:30:42" itemprop="dateModified" datetime="2023-06-07T00:30:42+08:00">2023-06-07</time>
+    <time title="修改时间：2023-06-06 00:25:59" itemprop="dateModified" datetime="2023-06-06T00:25:59+08:00">2023-06-06</time>
   </span>
 </div>
 
@@ -247,7 +248,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://eeeeerror.github.io/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="小拓展之信道">http://eeeeerror.github.io/2023/06/07/双信道/</a>
+    <a href="http://eeeeerror.github.io/2023/06/12/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="re">http://eeeeerror.github.io/2023/06/12/双信道/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -266,20 +267,20 @@ eeeeerror的博客 = eeeeerror = miss u</title>
     <div class="item left">
       
 
-  <a href="/2023/06/07/%E8%8A%B1%E6%8C%87%E4%BB%A4/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;Z5W6r2BSoiThHG1.jpg" title="花指令">
+  <a href="/2023/06/12/%E5%88%AB%E4%BA%BA%E7%9A%84re%E7%AC%94%E8%AE%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;Z5W6r2BSoiThHG1.jpg" title="re">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>花指令</h3>
+  <h3>re</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/06/07/Linux/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;Z5W6r2BSoiThHG1.jpg" title="Linux命令小全">
+  <a href="/2023/06/12/%E8%8A%B1%E6%8C%87%E4%BB%A4/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;Z5W6r2BSoiThHG1.jpg" title="re">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Linux命令小全</h3>
+  <h3>re</h3>
   </a>
 
     </div>
@@ -313,7 +314,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">13</span>
+        <span class="count">16</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -338,12 +339,12 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2023/06/07/%E8%8A%B1%E6%8C%87%E4%BB%A4/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+        <a href="/2023/06/12/%E5%88%AB%E4%BA%BA%E7%9A%84re%E7%AC%94%E8%AE%B0/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2023/06/07/Linux/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+        <a href="/2023/06/12/%E8%8A%B1%E6%8C%87%E4%BB%A4/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -367,7 +368,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/06/hello-world/" title="Hello World">Hello World</a></span>
+    <span><a href="/2023/06/12/re/" title="re">re</a></span>
   </li>
 
       
@@ -376,7 +377,70 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/z3/" title="z3简单学习">z3简单学习</a></span>
+    <span><a href="/2023/06/12/%E5%88%AB%E4%BA%BA%E7%9A%84re%E7%AC%94%E8%AE%B0/" title="re">re</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/SimpleRev/" title="re">re</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/GUET-CTF2019-re/" title="GUET-CTF2019 re">GUET-CTF2019 re</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/dll%E6%B3%A8%E5%85%A5/" title="re">re</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" title="re">re</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/easyre/" title="未命名">未命名</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/z3/" title="re">re</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/jocker.exe/" title="re">re</a></span>
   </li>
 
       
@@ -386,69 +450,6 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 </div>
 
     <span><a href="/2023/06/08/CrackRTF/" title="CrackRTF">CrackRTF</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" title="PE文件笔记1">PE文件笔记1</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令">花指令</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/09/GUET-CTF2019-re/" title="GUET-CTF2019 re">GUET-CTF2019 re</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="小拓展之信道">小拓展之信道</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/Linux/" title="Linux命令小全">Linux命令小全</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/SMC/" title="SMC">SMC</a></span>
   </li>
 
   </ul>
@@ -479,7 +480,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2023/06/07/双信道/',
+    path: '2023/06/12/双信道/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"

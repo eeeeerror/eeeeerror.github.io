@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="http://eeeeerror.github.io/2023/06/07/SMC/">
+<link rel="canonical" href="http://eeeeerror.github.io/2023/06/12/jocker.exe/">
 
 
 
   <title>
-SMC |
+re |
 eeeeerror的博客 = eeeeerror = miss u</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +58,16 @@ eeeeerror的博客 = eeeeerror = miss u</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">SMC
+  <h1 itemprop="name headline">re
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2023-06-07 00:20:30">
+  <span class="item" title="创建时间：2023-06-12 22:37:06">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">发表于</span>
-    <time itemprop="dateCreated datePublished" datetime="2023-06-07T00:20:30+08:00">2023-06-07</time>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-12T22:37:06+08:00">2023-06-12</time>
   </span>
 </div>
 
@@ -101,10 +101,10 @@ eeeeerror的博客 = eeeeerror = miss u</title>
       <div id="imgs" class="pjax">
         <ul>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
         </ul>
       </div>
@@ -134,7 +134,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
-  <link itemprop="mainEntityOfPage" href="http://eeeeerror.github.io/2023/06/07/SMC/">
+  <link itemprop="mainEntityOfPage" href="http://eeeeerror.github.io/2023/06/12/jocker.exe/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -149,29 +149,128 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="smc"><a class="markdownIt-Anchor" href="#smc">#</a> SMC</h1>
-<p>可以看成两段程序，smc 解密在上先运行对后面加密的程序的机器码解码，然后在运行后面的解码后的程序。</p>
-<p>有指针指向机器码开头，运行就会赋值机器码去加密</p>
-<p>对机器码事先加密，刚进入 ida 是看不见，只有运行过后才能看见真正的机器码，ida 翻译会报错，</p>
-<p>原理：用前一段代码去解码后一段加密的机器码</p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070028911.png" alt="屏幕截图_20230112_215517"></p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070028387.png" alt="屏幕截图_20230112_215953"></p>
-<h1 id="时间检测器"><a class="markdownIt-Anchor" href="#时间检测器">#</a> 时间检测器</h1>
-<p>运行时间和调试时间不一样，在起点设置记录器在终点也一样，然后相减<img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070028506.png" alt="屏幕截图_20230112_212115"></p>
-<p>异或：相同为 0，不同为 1</p>
-<p><img data-src="C:%5CUsers%5C18333%5CPictures%5CScreenshots%5C%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_20230112_212548.png" alt="屏幕截图_20230112_212548"></p>
-<p>0xCC：软件断点的原理：调试器在对应设置断点的位置上修改该地址的字节为 0xCC。若是关键位置检测到该指令，可以判断进程处于调试状态。</p>
-<p>0xCC 既可以是 INT 3 指令，也可以是其他指令的操作数。</p>
-<p>int3 运行会触发异常，会暂停</p>
-<h1 id="比较校验和"><a class="markdownIt-Anchor" href="#比较校验和">#</a> 比较校验和</h1>
-<p>加所有机器码会有一个校验和，如果修改就会不一样</p>
-<h1 id="线程结构体"><a class="markdownIt-Anchor" href="#线程结构体">#</a> 线程结构体</h1>
-<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070028028.png" alt="屏幕截图_20230112_214553"></p>
-<p>断点记录在这个结构体里面</p>
-<p>句柄：类似指针</p>
-<h1 id="故意触发异常"><a class="markdownIt-Anchor" href="#故意触发异常">#</a> 故意触发异常</h1>
-<p>使用 loadlibrary 去故意传入没有的 dll 文件，让他返回 0 去混淆视听，去写分支去阻止反调试</p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029493.png" alt="屏幕截图_20230112_224834"><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029605.png" alt="屏幕截图_20230112_215446"></p>
+    <p>title: joker</p>
+<p><span class="exturl" data-url="QzolNUNVc2VycyU1QzE4MzMzJTVDRGVza3RvcCU1Q2pvY2tlci5leGU=">jocker.exe</span></p>
+<p>声明<br>
+这个题，分析了一下，两个知识，一个是栈指针修改，还有一个 smc 自修改（自修改的话，两种破法，一个是 idc 脚本，一个是动调）</p>
+<p>栈指针修改</p>
+<p>进入程序直接地址 0x401838 的 sp 指针（堆栈不平衡）报错，点击 options—&gt;general—&gt; 勾选 stack pointer，然后找到地址 0x401838，截图看看</p>
+<p>call 函数调用前后 栈顶指针 sp 位置不一样，可能吗？？？？？？？那栈怎么平衡？？？？详情请看 https://blog.csdn.net/dj0379/article/details/8699219?utm_source=app&amp;app_version=4.5.5<br>
+ 二话不说，改。鼠标点到 call 那里，然后按键盘 Alt + K</p>
+<p>紧接着把这个 sp 改成 0</p>
+<p>接着，下面还有一个这样报错，照改即可</p>
+<p>改完之后就能 F5 喽。</p>
+<p>wrong</p>
+<p>omg</p>
+<p>导出 内存数组快捷键 shift + E</p>
+<p fak3_alw35_sp_me!!="">unsigned char unk_4030C0[] =<br>
+{<br>
+0x66,0x6B,0x63,0x64,0x7F,0x61,0x67,0x64,<br>
+0x3B,0x56,0x6B,0x61,0x7B,0x26,0x3B,0x50,<br>
+0x63,0x5F,0x4D,0x5A,0x71,0x0C,0x37,0x66<br>
+};<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+ 这个 wrong 函数和 omg 求得一个假的 flag，浪费表情 flag</p>
+<p>smc 自修改</p>
+<p>这里有个很长的 for 循环，一看就是 smc，以至于我静态情况下进了 encrypt</p>
+<p>直接 F5 没法搞，被上面的栈顶指针搞兴奋了。。。。眼瞎直接不看，又来修改栈指针。。。。还把<br>
+这两条指令给 patch 了。。我还特地去查了一下 enter 指令后加数据是什么玩意。。。。算了，都是眼瞎的悲剧。。。</p>
+<p>动调</p>
+<p>进入 encrtpt（把数据段编程代码来解析）</p>
+<p>.text:0040152C jmp     short near ptr dword_401534+43h<br>
+1<br>
+ 跳转的地址是一个数据段，我们不方便观察，编译器也不方便解析，但是并不影响程序执行哦。。。我们需要观察的话，需要把这堆数据段搞成代码（按下 c 键即可）来解析，然后变成这样</p>
+<p>接下来按下 p 键，也就是把它当成一个函数来解析即可。</p>
+<p>int __cdecl encrypt(char *a1)<br>
+{<br>
+int v2[19]; // [sp+1Ch] [bp-6Ch]@1<br>
+int v3; // [sp+68h] [bp-20h]@1<br>
+int i; // [sp+6Ch] [bp-1Ch]@1</p>
+<p>v3 = 1;<br>
+qmemcpy(v2, &amp;unk_403040, sizeof(v2));<br>
+for ( i = 0; i &lt;= 18; ++i )<br>
+<ruby>
+    if ( (char)(a1[i] <rp>【</rp><rt> aHahahaha_do_yo[i]) != v2[i] )
+    {
+      puts(“wrong ~”);
+      v3 = 0;
+      exit(0);
+    </rt><rp>】</rp></ruby><br>
+}<br>
+if ( v3 == 1 )<br>
+puts(“come here”);<br>
+return v3;<br>
+}<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+unsigned char unk_403040[] =<br>
+{<br>
+0x0E,0x0D,0x09,0x06,0x13,0x05,<br>
+0x58,0x56,0x3E,0x06,0x0C,0x3C,<br>
+0x1F,0x57,0x14,0x6B,0x57,0x59,0x0D,<br>
+};<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+aHahahaha_do_yo db ‘hahahaha_do_you_find_me?’<br>
+1<br>
+ 上面只有 19 位，剩下的五位在 finally 函数里面，</p>
+<p>最后一个是 58，因为 flag 最后一个都是}，跟} 需要异或 71，再将之前的四个值都和 71 异或。脑洞有点强</p>
+<p>flag<ruby>d07abccf8a410cb37a}
+1
+idc<rt></rt> 脚本<rp>【</rp><rt>0x41);</rt><rp>】</rp>
+#include&lt;idc.idc&gt;
+static main(){
+auto start=0x401500l;
+auto i =0;
+for(;i&lt;187;i++){
+ auto a=Byte(start+i);
+   PatchByte(i+start,a<rt></rt></ruby><br>
+}<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+ 保存成后缀名为.idc 的文件，紧接着</p>
+<p>然后导入所写脚本文件，</p>
+<p>未导入之前</p>
+<p>导入之后</p>
+<p>只需要按一下 p 键就得了。。。F5 后即可</p>
+<p>————————————————<br>
+ 版权声明：本文为 CSDN 博主「寻梦 &amp; 之璐」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NTTk4yMDE5L2FydGljbGUvZGV0YWlscy8xMTUzMjgwMzg=">https://blog.csdn.net/CSNN2019/article/details/115328038</span></p>
 
   </div>
 
@@ -183,7 +282,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-06-07 00:37:01" itemprop="dateModified" datetime="2023-06-07T00:37:01+08:00">2023-06-07</time>
+    <time title="修改时间：2023-06-06 00:25:59" itemprop="dateModified" datetime="2023-06-06T00:25:59+08:00">2023-06-06</time>
   </span>
 </div>
 
@@ -219,7 +318,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://eeeeerror.github.io/2023/06/07/SMC/" title="SMC">http://eeeeerror.github.io/2023/06/07/SMC/</a>
+    <a href="http://eeeeerror.github.io/2023/06/12/jocker.exe/" title="re">http://eeeeerror.github.io/2023/06/12/jocker.exe/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -238,20 +337,20 @@ eeeeerror的博客 = eeeeerror = miss u</title>
     <div class="item left">
       
 
-  <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;HKyzSd7NI3mlBpt.jpg" title="PE自动写入代码">
+  <a href="/2023/06/12/GUET-CTF2019-re/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;Z5W6r2BSoiThHG1.jpg" title="GUET-CTF2019 re">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>PE自动写入代码</h3>
+  <h3>GUET-CTF2019 re</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/06/07/z3/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;qAMYEFXxJcKRsiG.gif" title="z3简单学习">
+  <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;qAMYEFXxJcKRsiG.gif" title="re">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>z3简单学习</h3>
+  <h3>re</h3>
   </a>
 
     </div>
@@ -270,7 +369,6 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#smc"><span class="toc-number">1.</span> <span class="toc-text"> SMC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%A3%80%E6%B5%8B%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> 时间检测器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E6%A0%A1%E9%AA%8C%E5%92%8C"><span class="toc-number">3.</span> <span class="toc-text"> 比较校验和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">4.</span> <span class="toc-text"> 线程结构体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%85%E6%84%8F%E8%A7%A6%E5%8F%91%E5%BC%82%E5%B8%B8"><span class="toc-number">5.</span> <span class="toc-text"> 故意触发异常</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -285,7 +383,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">13</span>
+        <span class="count">16</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -310,12 +408,12 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+        <a href="/2023/06/12/GUET-CTF2019-re/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2023/06/07/z3/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+        <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -339,7 +437,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="PE文件笔记2">PE文件笔记2</a></span>
+    <span><a href="/2023/06/12/easyre/" title="未命名">未命名</a></span>
   </li>
 
       
@@ -348,7 +446,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
+    <span><a href="/2023/06/12/z3/" title="re">re</a></span>
   </li>
 
       
@@ -357,7 +455,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/z3/" title="z3简单学习">z3简单学习</a></span>
+    <span><a href="/2023/06/12/dll%E6%B3%A8%E5%85%A5/" title="re">re</a></span>
   </li>
 
       
@@ -366,7 +464,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="PE自动写入代码">PE自动写入代码</a></span>
+    <span><a href="/2023/06/12/SetWindowsHookEx/" title="re">re</a></span>
   </li>
 
       
@@ -375,7 +473,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/Linux/" title="Linux命令小全">Linux命令小全</a></span>
+    <span><a href="/2023/06/12/%E5%88%AB%E4%BA%BA%E7%9A%84re%E7%AC%94%E8%AE%B0/" title="re">re</a></span>
   </li>
 
       
@@ -384,7 +482,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令">花指令</a></span>
+    <span><a href="/2023/06/12/GUET-CTF2019-re/" title="GUET-CTF2019 re">GUET-CTF2019 re</a></span>
   </li>
 
       
@@ -393,7 +491,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/06/hello-world/" title="Hello World">Hello World</a></span>
+    <span><a href="/2023/06/12/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="re">re</a></span>
   </li>
 
       
@@ -402,7 +500,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/09/GUET-CTF2019-re/" title="GUET-CTF2019 re">GUET-CTF2019 re</a></span>
+    <span><a href="/2023/06/12/re/" title="re">re</a></span>
   </li>
 
       
@@ -411,7 +509,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/SMC/" title="SMC">SMC</a></span>
+    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="re">re</a></span>
   </li>
 
       
@@ -420,7 +518,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/08/easyre/" title="CTF1">CTF1</a></span>
+    <span><a href="/2023/06/12/SimpleRev/" title="re">re</a></span>
   </li>
 
   </ul>
@@ -451,7 +549,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2023/06/07/SMC/',
+    path: '2023/06/12/jocker.exe/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"

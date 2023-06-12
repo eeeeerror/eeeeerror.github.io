@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="http://eeeeerror.github.io/2023/06/07/dll%E6%B3%A8%E5%85%A5/">
+<link rel="canonical" href="http://eeeeerror.github.io/2023/06/12/SimpleRev/">
 
 
 
   <title>
-dll注入 |
+re |
 eeeeerror的博客 = eeeeerror = miss u</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +58,16 @@ eeeeerror的博客 = eeeeerror = miss u</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">dll注入
+  <h1 itemprop="name headline">re
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2023-06-07 00:17:58">
+  <span class="item" title="创建时间：2023-06-12 22:37:06">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">发表于</span>
-    <time itemprop="dateCreated datePublished" datetime="2023-06-07T00:17:58+08:00">2023-06-07</time>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-12T22:37:06+08:00">2023-06-12</time>
   </span>
 </div>
 
@@ -100,11 +100,11 @@ eeeeerror的博客 = eeeeerror = miss u</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
         </ul>
       </div>
@@ -134,7 +134,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
-  <link itemprop="mainEntityOfPage" href="http://eeeeerror.github.io/2023/06/07/dll%E6%B3%A8%E5%85%A5/">
+  <link itemprop="mainEntityOfPage" href="http://eeeeerror.github.io/2023/06/12/SimpleRev/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -149,14 +149,136 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h2 id="dll注入"><a class="markdownIt-Anchor" href="#dll注入">#</a> dll 注入</h2>
-<p>一。什么是 dll</p>
-<p>​	动态链接库，是微软公司在微软 windows 操作系统中，实现共享函数库概念的一种方式，库函数的扩展名是。dll，ocx 或者.drv</p>
-<p>二。为何要有 dll</p>
-<p>​	由于进程的地址都是独立的，当多个进程共享相同的库时，每个库都在硬盘和进程彼此存放一份的话，防止浪费内存，便推出了 dll，dll 在硬盘存为一个文件，在内存使用一个实例（instance）</p>
-<p>三。什么是 dll 注入</p>
-<p>​	我们可以利用 dll 的机制让 a 程序强行执行 b 给定的的 dll 库，达到 a 进程控制 b 进程的目的</p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/eeeeerror/image/202306070029530.png" alt="image-20230424210630335"></p>
+    <p>title: CTF</p>
+<p>逆向 reverse 小白一枚，欢迎各位师傅指出不足之处。 <span class="exturl" data-url="QzolNUNVc2VycyU1QzE4MzMzJTVDRGVza3RvcCU1Q1NpbXBsZVJldg==">SimpleRev</span></p>
+<p>buuctf-SimpleRev<br>
+**<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmYW56Y2YvYXJ0aWNsZS9kZXRhaWxzLzExODc4ODAwNw==">(50 条消息) BUUCTF SimpleRev（涉及大小端序存储的问题）_Afanbird 的博客 - CSDN 博客</span></p>
+<p>考点：大端序，小端序，分析伪代码<br>
+做这道题的时候遇到了一个新的知识点，大端序和小端序。</p>
+<p>用 Exeinfo PE 打开</p>
+<p>发现是 64 位的，无壳。然后用 IDA pro64 位打开</p>
+<p>shift + F12 查看字符串窗口</p>
+<p>ctrl + X 交叉引用 <span class="exturl" data-url="QzolNUNVc2VycyU1QzE4MzMzJTVDRGVza3RvcCU1Q1NpbXBsZVJldg==">SimpleRev</span></p>
+<p>F5 反汇编。</p>
+<p>将 100、68、113、83，R 字符转换为 ASCLL 码。</p>
+<p>看到有一个 Decry（）函数。<br>
+打开之后，代码如下：</p>
+<p>unsigned __int64 Decry()<br>
+{<br>
+char v1; // [rsp+Fh] [rbp-51h]<br>
+int v2; // [rsp+10h] [rbp-50h]<br>
+int v3; // [rsp+14h] [rbp-4Ch]<br>
+int i; // [rsp+18h] [rbp-48h]<br>
+int v5; // [rsp+1Ch] [rbp-44h]<br>
+char src[8]; // [rsp+20h] [rbp-40h]<br>
+__int64 v7; // [rsp+28h] [rbp-38h]<br>
+int v8; // [rsp+30h] [rbp-30h]<br>
+__int64 v9; // [rsp+40h] [rbp-20h]<br>
+__int64 v10; // [rsp+48h] [rbp-18h]<br>
+int v11; // [rsp+50h] [rbp-10h]<br>
+unsigned __int64 v12; // [rsp+58h] [rbp-8h]</p>
+<p>v12 = __readfsqword(0x28u);<br>
+*(_QWORD *)src = 357761762382LL;<br>
+v7 = 0LL;<br>
+v8 = 0;<br>
+v9 = 512969957736LL;<br>
+v10 = 0LL;<br>
+v11 = 0;<br>
+text = (char *)join(key3, &amp;v9);<br>
+strcpy(key, key1);<br>
+strcat(key, src);<br>
+v2 = 0;<br>
+v3 = 0;<br>
+getchar();<br>
+v5 = strlen(key);<br>
+for ( i = 0; i &lt; v5; ++i )<br>
+<ruby>
+if ( key[v3 % v5] &gt; 64 &amp;&amp; key[v3 % v5] &lt;= 90 )
+key[i] = key[v3 % v5] + 32;
+++v3;
+}
+printf(“Please input your flag:”, src);
+while ( 1 )
+{
+v1 = getchar();
+if ( v1 == 10 )
+break;
+if ( v1 == 32 )
+{
+++v2;
+}
+else
+{
+if ( v1 &lt;= 96 || v1 &gt; 122 )
+{
+if ( v1 &gt; 64 &amp;&amp; v1 &lt;= 90 )
+str2[v2] = (v1 - 39 - key[v3++ % v5] + 97) % 26 + 97;
+}
+else
+{
+str2[v2] = (v1 - 39 - key[v3++ % v5] + 97) % 26 + 97;
+}
+if ( !(v3 % v5) )
+putchar(32);
+++v2;
+}
+}
+if ( !strcmp(text, str2) )
+puts(“Congratulation!\n”);
+else
+puts(“Try again!\n”);
+return __readfsqword(0x28u) <rp>【</rp><rt> v12;
+</rt><rp>】</rp></ruby></p>
+<p>将 src 和 v9 的数据转为十六进制，快捷键 H。</p>
+<p>可以看到这里的两个十六进制是大端序，但是数据在内存中都是小端序，所以要将其，反转一下。一般在 CPU，x86 都是小端序，但是 IDA 将之转换为了大端序。</p>
+<p>先快捷键 R 将其转为字符。再反转，所以 src = NDCLS ， v9 = hadow 。</p>
+<p>key3 已经告诉，key3 = kills 。<br>
+再看这有一个 join 函数，它的作用是以指定的字符连接成一个新的字符串。此处是将 key3 和 v9 连接成一个新的字符串。</p>
+<p>即 text = killshadow。</p>
+<p>strcpy (key, key1); // 复制函数，将 key1 的字符串复制给 key，</p>
+<p>key1 = ADSFK， 所以 key = ADSFK<br>
+strcat 函数，是将 key 和 src 拼接在一起的函数， 所以 key = ADSFKNDCLS。</p>
+<p>看到 v5 = strlen（key），strlen 是计算字符串的长度，所以 v5 = 10 。<br>
+再看这个 for 循环语句，先将 64，90 变为字符。为</p>
+<p>再对照 ASCLL 码表，</p>
+<p>如果 key3【v3 % v5】是大写字母，则把它变为小写字母。大小写字母的 ASCLL 码，相差 32。</p>
+<p>再将下面的数字变为 ASCLL 码字符。</p>
+<p>看到最下面的 if 语句，如果！strcmp（text ，str2），则正确，strcmp 函数，是比较函数，如果两个字符串相同，则等于 0，所以 text = str2 才成功。</p>
+<p>而得到 str2 的关键就是：<br>
+str2[v2] = (v1 - 39 - key[v3++ % v5] + 97) % 26 + 97;</p>
+<p>接下来，写脚本。</p>
+<p>#include&lt;stdio.h&gt;<br>
+int main()<br>
+{<br>
+char key [] = “adsfkndcls”; //key 字符串是 adsfkndcls<br>
+char text [] = “killshadow”; //text 字符串是 killshadow<br>
+int i; // 定义了变量 i<br>
+int v2 = 0;<br>
+int v3 = 10;//v3 的长度为 10 , 因为在大写字母变小写的时候，v3 会 ++，而字符串变了 10 次。<br>
+int v5 = 10;<br>
+for (int i = 0; i &lt; v5; i++)// 开始循环<br>
+ {<br>
+for (int j = 0; j &lt; 123; j++)// 开始第二重循环 j = v1;<br>
+{<br>
+if ((j &lt; ‘A’ || j&gt; ‘Z’) || (j &lt; ‘z’ &amp;&amp; j &gt; ‘a’))//|| 和 &amp;&amp; 交换 &gt; 和 &lt; 交换 ，让 j 不再那个范围之内<br>
+ {<br>
+continue;// 如果不在范围之内，就跳过本次循环。<br>
+}<br>
+ if ((j - 39 - key [v3 % 10] + 97) % 26 + 97 == text [i])// 执行这个算法，跟 text 字符串相比，如果相等就输出<br>
+ // 这个字符<br>
+ {<br>
+printf(&quot;%c&quot;,j);<br>
+v3++;// 注意算法里面 v3++，所以这里也要把 v3++；<br>
+break;<br>
+}<br>
+}<br>
+}<br>
+}</p>
+<p>总结：这个题目除了基本的 IDA pro 的一些小小的快捷键之外，还需要知道小端序和大端序的知识，怎么去判断是小端序和大端序，这个我也不知道（百度了一波，可以自己写一个小程序来判断），大概就是在做题的时候，如果碰到我们需要手动去转字符的，应该就是反转一下字符的位置，实在不行大端序和小端序都去试一下。然后并是分析伪代码，知道它是在干什么，我们需要什么，还差了什么。然后写脚本，来运行得出 flag。目前这一点，自己还不是很会，还需多多练习啊。</p>
+<p>继续学习！！！<br>
+————————————————<br>
+ 版权声明：本文为 CSDN 博主「Afanbird」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FmYW56Y2YvYXJ0aWNsZS9kZXRhaWxzLzExODc4ODAwNw==">https://blog.csdn.net/afanzcf/article/details/118788007</span></p>
 
   </div>
 
@@ -168,7 +290,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-06-07 00:29:30" itemprop="dateModified" datetime="2023-06-07T00:29:30+08:00">2023-06-07</time>
+    <time title="修改时间：2023-06-06 00:25:59" itemprop="dateModified" datetime="2023-06-06T00:25:59+08:00">2023-06-06</time>
   </span>
 </div>
 
@@ -204,7 +326,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://eeeeerror.github.io/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">http://eeeeerror.github.io/2023/06/07/dll注入/</a>
+    <a href="http://eeeeerror.github.io/2023/06/12/SimpleRev/" title="re">http://eeeeerror.github.io/2023/06/12/SimpleRev/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -223,20 +345,20 @@ eeeeerror的博客 = eeeeerror = miss u</title>
     <div class="item left">
       
 
-  <a href="/2023/06/06/hello-world/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;HKyzSd7NI3mlBpt.jpg" title="Hello World">
+  <a href="/2023/06/12/SetWindowsHookEx/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;qAMYEFXxJcKRsiG.gif" title="re">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Hello World</h3>
+  <h3>re</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;HKyzSd7NI3mlBpt.jpg" title="PE文件笔记1">
+  <a href="/2023/06/12/SMC/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;10&#x2F;30&#x2F;rjdhcSgEN8COBPA.jpg" title="未命名">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>PE文件笔记1</h3>
+  <h3>未命名</h3>
   </a>
 
     </div>
@@ -255,7 +377,6 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#dll%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text"> dll 注入</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -270,7 +391,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">13</span>
+        <span class="count">16</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -295,12 +416,12 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2023/06/06/hello-world/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+        <a href="/2023/06/12/SetWindowsHookEx/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+        <a href="/2023/06/12/SMC/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -324,7 +445,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/09/GUET-CTF2019-re/" title="GUET-CTF2019 re">GUET-CTF2019 re</a></span>
+    <span><a href="/2023/06/12/SimpleRev/" title="re">re</a></span>
   </li>
 
       
@@ -333,25 +454,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/z3/" title="z3简单学习">z3简单学习</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="PE自动写入代码">PE自动写入代码</a></span>
+    <span><a href="/2023/06/12/SetWindowsHookEx/" title="re">re</a></span>
   </li>
 
       
@@ -369,7 +472,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/06/hello-world/" title="Hello World">Hello World</a></span>
+    <span><a href="/2023/06/12/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="re">re</a></span>
   </li>
 
       
@@ -378,7 +481,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6/" title="PE文件笔记1">PE文件笔记1</a></span>
+    <span><a href="/2023/06/12/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="re">re</a></span>
   </li>
 
       
@@ -387,7 +490,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/08/easyre/" title="CTF1">CTF1</a></span>
+    <span><a href="/2023/06/12/dll%E6%B3%A8%E5%85%A5/" title="re">re</a></span>
   </li>
 
       
@@ -396,7 +499,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="PE文件笔记2">PE文件笔记2</a></span>
+    <span><a href="/2023/06/12/SMC/" title="未命名">未命名</a></span>
   </li>
 
       
@@ -405,7 +508,25 @@ eeeeerror的博客 = eeeeerror = miss u</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/07/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="小拓展之信道">小拓展之信道</a></span>
+    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="re">re</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/re/" title="re">re</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="re">re</a></span>
   </li>
 
   </ul>
@@ -436,7 +557,7 @@ eeeeerror的博客 = eeeeerror = miss u</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2023/06/07/dll注入/',
+    path: '2023/06/12/SimpleRev/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"
