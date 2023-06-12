@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
-          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></li>
           <li class="item" data-background-image="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></li>
+          <li class="item" data-background-image="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></li>
         </ul>
       </div>
     </header>
@@ -121,7 +121,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/%E5%8F%8C%E4%BF%A1%E9%81%93/" itemprop="url" title="双信道"><img data-src="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></a>
+    <a href="/2023/06/12/%E5%8F%8C%E4%BF%A1%E9%81%93/" itemprop="url" title="双信道"><img data-src="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></a>
   </div>
   <div class="info">
     
@@ -158,7 +158,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/z3/" itemprop="url" title="Z3"><img data-src="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></a>
+    <a href="/2023/06/12/z3/" itemprop="url" title="Z3"><img data-src="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></a>
   </div>
   <div class="info">
     
@@ -200,7 +200,7 @@ BitVec （‘a’，8）char 型...
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/SMC/" itemprop="url" title="未命名"><img data-src="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></a>
+    <a href="/2023/06/12/SMC/" itemprop="url" title="SMC"><img data-src="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></a>
   </div>
   <div class="info">
     
@@ -213,10 +213,9 @@ BitVec （‘a’，8）char 型...
   </span>
 </div>
 
-    <h3><a href="/2023/06/12/SMC/" itemprop="url" title="未命名">未命名</a></h3>
+    <h3><a href="/2023/06/12/SMC/" itemprop="url" title="SMC">SMC</a></h3>
     <div class="excerpt">
-        # title：SMC
-# SMC
+        # SMC
 可以看成两段程序，smc 解密在上先运行对后面加密的程序的机器码解码，然后在运行后面的解码后的程序。
 有指针指向机器码开头，运行就会赋值机器码去加密
 对机器码事先加密，刚进入 ida 是看不见，只有运行过后才能看见真正的机器码，ida 翻译会报错，
@@ -227,16 +226,16 @@ BitVec （‘a’，8）char 型...
 异或：相同为 0，不同为 1
 
 0xCC：软件断点的原理：调试器在对应设置断点的位置上修改该地址的字节为 0xCC。若是关键位置检测到该指令，可以判断进程处于调试状态。
-0xCC...
+0xCC 既可以是 INT 3...
     </div>
-    <a href="/2023/06/12/SMC/" itemprop="url" title="未命名" class="btn">more...</a>
+    <a href="/2023/06/12/SMC/" itemprop="url" title="SMC" class="btn">more...</a>
   </div>
 </article>
 
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/SetWindowsHookEx/" itemprop="url" title="re"><img data-src="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></a>
+    <a href="/2023/06/12/SetWindowsHookEx/" itemprop="url" title="键盘hook"><img data-src="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></a>
   </div>
   <div class="info">
     
@@ -249,17 +248,17 @@ BitVec （‘a’，8）char 型...
   </span>
 </div>
 
-    <h3><a href="/2023/06/12/SetWindowsHookEx/" itemprop="url" title="re">re</a></h3>
+    <h3><a href="/2023/06/12/SetWindowsHookEx/" itemprop="url" title="键盘hook">键盘hook</a></h3>
     <div class="excerpt">
-        title: 钩子
-# SetWindowsHookEx
+        # SetWindowsHookEx
 是一个 Windows API 函数，可以用于在 Windows 系统中安装鼠标和键盘的钩子函数。它可以捕获鼠标和键盘事件，并允许开发者在这些事件发生时执行自定义逻辑。通过使用 SetWindowsHookEx，开发人员能够编写更高级的应用程序或工具，如键盘记录器、宏工具和自动化脚本等。此外，SetWindowsHookEx 还可用于监视用户活动以及保护系统安全和隐私。但需要注意的是，如果 Hook 函数的执行时间过长，将会导致系统性能下降，因此必须小心使用。
 
 2023/4/25 21:24:39
 怎么使用
-2023/4/25...
+2023/4/25 21:25:12
+使用...
     </div>
-    <a href="/2023/06/12/SetWindowsHookEx/" itemprop="url" title="re" class="btn">more...</a>
+    <a href="/2023/06/12/SetWindowsHookEx/" itemprop="url" title="键盘hook" class="btn">more...</a>
   </div>
 </article>
 
@@ -301,7 +300,7 @@ F5 反汇编。
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/re/" itemprop="url" title="其他"><img data-src="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></a>
+    <a href="/2023/06/12/re/" itemprop="url" title="其他"><img data-src="https://i.loli.net/2020/10/30/Z5W6r2BSoiThHG1.jpg"></a>
   </div>
   <div class="info">
     
@@ -340,7 +339,7 @@ jmp
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" itemprop="url" title="pe文件2"><img data-src="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></a>
+    <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" itemprop="url" title="pe文件2"><img data-src="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></a>
   </div>
   <div class="info">
     
@@ -371,7 +370,7 @@ jmp
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" itemprop="url" title="自动脚本"><img data-src="https://i.loli.net/2020/10/30/rjdhcSgEN8COBPA.jpg"></a>
+    <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" itemprop="url" title="自动脚本"><img data-src="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></a>
   </div>
   <div class="info">
     
@@ -395,7 +394,7 @@ jmp
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="pe文件"><img data-src="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></a>
+    <a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" itemprop="url" title="pe文件"><img data-src="https://i.loli.net/2020/10/30/qAMYEFXxJcKRsiG.gif"></a>
   </div>
   <div class="info">
     
@@ -428,7 +427,7 @@ RVA+ImageBase=VA
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/06/12/jocker.exe/" itemprop="url" title="ctf"><img data-src="https://i.loli.net/2020/10/30/Y1CBXqgeokEs457.jpg"></a>
+    <a href="/2023/06/12/jocker.exe/" itemprop="url" title="ctf"><img data-src="https://i.loli.net/2020/10/30/HKyzSd7NI3mlBpt.jpg"></a>
   </div>
   <div class="info">
     
@@ -542,61 +541,7 @@ call 函数调用前后 栈顶指针 sp 位置不一样，可能吗？？？？�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/12/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="双信道">双信道</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/12/z3/" title="Z3">Z3</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/12/SMC/" title="未命名">未命名</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/12/re/" title="其他">其他</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/08/CrackRTF/" title="CrackRTF">CrackRTF</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/12/jocker.exe/" title="ctf">ctf</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/06/12/easyre/" title="未命名">未命名</a></span>
+    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="pe文件2">pe文件2</a></span>
   </li>
 
       
@@ -614,7 +559,7 @@ call 函数调用前后 栈顶指针 sp 位置不一样，可能吗？？？？�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%86%99%E5%85%A5/" title="自动脚本">自动脚本</a></span>
+    <span><a href="/2023/06/12/dll%E6%B3%A8%E5%85%A5/" title="dll注入">dll注入</a></span>
   </li>
 
       
@@ -623,7 +568,61 @@ call 函数调用前后 栈顶指针 sp 位置不一样，可能吗？？？？�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6%E4%B9%8Bhello%20world/" title="pe文件2">pe文件2</a></span>
+    <span><a href="/2023/06/12/jocker.exe/" title="ctf">ctf</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/SetWindowsHookEx/" title="键盘hook">键盘hook</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/re/" title="其他">其他</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/SimpleRev/" title="未命名">未命名</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/z3/" title="Z3">Z3</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/PE%E6%96%87%E4%BB%B6/" title="pe文件">pe文件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/06/12/%E5%8F%8C%E4%BF%A1%E9%81%93/" title="双信道">双信道</a></span>
   </li>
 
   </ul>
