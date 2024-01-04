@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="注入模式 描述 命令或参数 优点 主要用途    Spawn模式 将启动App的权利交由Frida来控制，即使目标App已经启动，在使用Frida注入程序时还是会重新启动App 在CLI模式中，Frida通过加上 -f 参数指定包名以spawn模式操作App 适合于需要在App启动时即进行注入的场景，可以在App启动时即捕获其行为 当需要监控App从启动开始的所有行为时使用   Attach">
+    <meta name="description" content="Spawn模式 12 复制代码 隐藏代码frida -U -f 进程名 -l hook.js  attach模式 ： 12 复制代码 隐藏代码frida -U 进程名 -l hook.js  Hook框架模板1234567 复制代码 隐藏代码function main()&#123;    Java.perform(function()&#123;        hookTest1();    &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="eeeeerror">
+<meta property="og:title" content="frida">
 <meta property="og:url" content="http://example.com/2024/01/04/frida/index.html">
 <meta property="og:site_name" content="eeeeerror">
-<meta property="og:description" content="注入模式 描述 命令或参数 优点 主要用途    Spawn模式 将启动App的权利交由Frida来控制，即使目标App已经启动，在使用Frida注入程序时还是会重新启动App 在CLI模式中，Frida通过加上 -f 参数指定包名以spawn模式操作App 适合于需要在App启动时即进行注入的场景，可以在App启动时即捕获其行为 当需要监控App从启动开始的所有行为时使用   Attach">
+<meta property="og:description" content="Spawn模式 12 复制代码 隐藏代码frida -U -f 进程名 -l hook.js  attach模式 ： 12 复制代码 隐藏代码frida -U 进程名 -l hook.js  Hook框架模板1234567 复制代码 隐藏代码function main()&#123;    Java.perform(function()&#123;        hookTest1();    &amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-04T06:55:39.468Z">
-<meta property="article:modified_time" content="2023-12-04T13:02:23.020Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-01-04T07:07:34.356Z">
+<meta property="article:author" content="xorr">
 <meta name="twitter:card" content="summary">
     
     
@@ -36,7 +36,7 @@
       
     
     <!-- title -->
-    <title>eeeeerror</title>
+    <title>frida</title>
     <!-- async scripts -->
     <!-- Google Analytics -->
 
@@ -69,7 +69,7 @@
         <!--
        --><li><a href="/">Home</a></li><!--
      --><!--
-       --><li><a href="/about/">About</a></li><!--
+       --><li><a href="/">About</a></li><!--
      --><!--
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
@@ -98,16 +98,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/frida/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/frida/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida/&text=frida"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida/&is_video=false&description=frida"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=frida&body=Check out this article: http://example.com/2024/01/04/frida/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida/&name=frida&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida/&t=frida"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -127,14 +127,14 @@
   <header>
     
     <h1 class="posttitle p-name" itemprop="name headline">
-        
+        frida
     </h1>
 
 
 
     <div class="meta">
       <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">John Doe</span>
+        <span class="p-name" itemprop="name">xorr</span>
       </span>
       
     <div class="postdate">
@@ -154,32 +154,7 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    <table>
-<thead>
-<tr>
-<th align="left">注入模式</th>
-<th align="left">描述</th>
-<th align="left">命令或参数</th>
-<th align="left">优点</th>
-<th align="left">主要用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Spawn模式</td>
-<td align="left">将启动App的权利交由Frida来控制，即使目标App已经启动，在使用Frida注入程序时还是会重新启动App</td>
-<td align="left">在CLI模式中，Frida通过加上 -f 参数指定包名以spawn模式操作App</td>
-<td align="left">适合于需要在App启动时即进行注入的场景，可以在App启动时即捕获其行为</td>
-<td align="left">当需要监控App从启动开始的所有行为时使用</td>
-</tr>
-<tr>
-<td align="left">Attach模式</td>
-<td align="left">在目标App已经启动的情况下，Frida通过ptrace注入程序从而执行Hook的操作</td>
-<td align="left">在CLI模式中，如果不添加 -f 参数，则默认会通过attach模式注入App</td>
-<td align="left">适合于已经运行的App，不会重新启动App，对用户体验影响较小</td>
-<td align="left">在App已经启动，或者我们只关心特定时刻或特定功能的行为时使用</td>
-</tr>
-</tbody></table>
-<p>Spawn模式</p>
+    <p>Spawn模式</p>
 <figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 复制代码 隐藏代码</span><br><span class="line">frida -U -f 进程名 -l hook<span class="number">.</span><span class="keyword">js</span></span><br></pre></td></tr></table></figure>
 
 <p>attach模式 ：</p>
@@ -205,7 +180,34 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 复制代码 隐藏代码<span class="keyword">var</span> <span class="title class_">ClassName</span>=<span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.zj.wuaipojie.Demo&quot;</span>); </span><br><span class="line"><span class="title class_">ClassName</span>.<span class="title function_">privateFunc</span>(<span class="string">&quot;传参&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>非静态方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">复制代码 隐藏代码    <span class="keyword">var</span> ret = <span class="literal">null</span>;</span><br><span class="line">   <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">       <span class="title class_">Java</span>.<span class="title function_">choose</span>(<span class="string">&quot;com.zj.wuaipojie.Demo&quot;</span>,&#123;    <span class="comment">//要hook的类</span></span><br><span class="line">           <span class="attr">onMatch</span>:<span class="keyword">function</span>(<span class="params">instance</span>)&#123;</span><br><span class="line">               ret=instance.<span class="title function_">privateFunc</span>(<span class="string">&quot;aaaaaaa&quot;</span>); <span class="comment">//要hook的方法</span></span><br><span class="line">           &#125;,</span><br><span class="line">           <span class="attr">onComplete</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">                   <span class="comment">//console.log(&quot;result: &quot; + ret);</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;)</span><br><span class="line">   <span class="comment">//return ret;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">asd 复制代码 隐藏代码    <span class="keyword">var</span> ret = <span class="literal">null</span>;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title class_">Java</span>.<span class="title function_">choose</span>(<span class="string">&quot;com.zj.wuaipojie.Demo&quot;</span>,&#123;    <span class="comment">//要hook的类</span></span><br><span class="line">            <span class="attr">onMatch</span>:<span class="keyword">function</span>(<span class="params">instance</span>)&#123;</span><br><span class="line">                ret=instance.<span class="title function_">privateFunc</span>(<span class="string">&quot;aaaaaaa&quot;</span>); <span class="comment">//要hook的方法</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">onComplete</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">                    <span class="comment">//console.log(&quot;result: &quot; + ret);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//return ret;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">注入模式</th>
+<th align="left">描述</th>
+<th align="left">命令或参数</th>
+<th align="center">优点</th>
+<th align="left">主要用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Spawn模式</td>
+<td align="left">将启动App的权利交由Frida来控制，即使目标App已经启动，在使用Frida注入程序时还是会重新启动App</td>
+<td align="left">在CLI模式中，Frida通过加上 -f 参数指定包名以spawn模式操作App</td>
+<td align="center">适合于需要在App启动时即进行注入的场景，可以在App启动时即捕获其行为</td>
+<td align="left">当需要监控App从启动开始的所有行为时使用</td>
+</tr>
+<tr>
+<td align="left">Attach模式</td>
+<td align="left">在目标App已经启动的情况下，Frida通过ptrace注入程序从而执行Hook的操作</td>
+<td align="left">在CLI模式中，如果不添加 -f 参数，则默认会通过attach模式注入App</td>
+<td align="center">适合于已经运行的App，不会重新启动App，对用户体验影响较小</td>
+<td align="left">在App已经启动，或者我们只关心特定时刻或特定功能的行为时使用</td>
+</tr>
+</tbody></table>
+
   </div>
 </article>
 
@@ -220,7 +222,7 @@
         
           <li><a href="/">Home</a></li>
         
-          <li><a href="/about/">About</a></li>
+          <li><a href="/">About</a></li>
         
           <li><a href="/archives/">Writing</a></li>
         
@@ -239,16 +241,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/frida/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/frida/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida/&text=frida"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida/&is_video=false&description=frida"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=frida&body=Check out this article: http://example.com/2024/01/04/frida/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida/&title=frida"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida/&name=frida&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida/&t=frida"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -272,7 +274,7 @@
     
     
     2016-2024
-    John Doe
+    xorr
   </div>
   <div class="footer-right">
     <nav>
@@ -280,7 +282,7 @@
         <!--
        --><li><a href="/">Home</a></li><!--
      --><!--
-       --><li><a href="/about/">About</a></li><!--
+       --><li><a href="/">About</a></li><!--
      --><!--
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
