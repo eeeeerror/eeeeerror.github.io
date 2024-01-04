@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="一、frida介绍frida是一款便携的、自由的、支持全平台的hook框架，可以通过编写JavaScript、Python代码来和frida_server端进行交互，还记得当年用xposed时那种写了一大堆代码每次修改都要重新打包安装重启手机、那种调试调到头皮发麻的痛苦，百分之30的时间都是在那里安装重启安装重启。 二、frida的代码结构123456789frida-core: Frida 核心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eeeeerror">
+<meta property="og:url" content="http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/index.html">
+<meta property="og:site_name" content="eeeeerror">
+<meta property="og:description" content="一、frida介绍frida是一款便携的、自由的、支持全平台的hook框架，可以通过编写JavaScript、Python代码来和frida_server端进行交互，还记得当年用xposed时那种写了一大堆代码每次修改都要重新打包安装重启手机、那种调试调到头皮发麻的痛苦，百分之30的时间都是在那里安装重启安装重启。 二、frida的代码结构123456789frida-core: Frida 核心">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311260017427.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311260017474.png">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-26cc59ba4268ac2a54da00d411173c5f_1440w.webp">
+<meta property="article:published_time" content="2024-01-04T06:55:39.472Z">
+<meta property="article:modified_time" content="2023-11-25T16:53:37.573Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311260017427.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>eeeeerror</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/01/04/objection(%E7%9C%8B%E4%B9%A61)/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/01/04/frida3(%E7%9C%8B%E4%B9%A61)/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81frida%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">一、frida介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81frida%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">二、frida的代码结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dalvik-%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">dalvik 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8A%8A-java-%E5%87%BD%E6%95%B0%E5%8F%98%E6%88%90-native-%E5%87%BD%E6%95%B0%EF%BC%8C%E7%84%B6%E5%90%8E%E4%BF%AE%E6%94%B9%E5%85%A5%E5%8F%A3%E4%BF%A1%E6%81%AF%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E4%BF%A1%E6%81%AF%E3%80%82"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">把 java 函数变成 native 函数，然后修改入口信息为自定义函数信息。</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-04T06:55:39.472Z" class="dt-published" itemprop="datePublished">2024-01-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="一、frida介绍"><a href="#一、frida介绍" class="headerlink" title="一、frida介绍"></a>一、<strong>frida介绍</strong></h2><p>frida是一款便携的、自由的、支持全平台的hook框架，可以通过编写JavaScript、Python代码来和frida_server端进行交互，还记得当年用xposed时那种写了一大堆代码每次修改都要重新打包安装重启手机、那种调试调到头皮发麻的痛苦，百分之30的时间都是在那里安装重启安装重启。</p>
+<h2 id="二、frida的代码结构"><a href="#二、frida的代码结构" class="headerlink" title="二、frida的代码结构"></a>二、<strong>frida的代码结构</strong></h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">frida-core: Frida 核心库</span><br><span class="line">frida-gum: inline-hook 框架</span><br><span class="line">bindings:</span><br><span class="line">frida-python: python</span><br><span class="line">frida-node: Node.js</span><br><span class="line">frida-qml: Qml</span><br><span class="line">frida-swift: Swift</span><br><span class="line">frida-tools: CLI tools</span><br><span class="line">capstone: instruction disammbler</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Frida的核心是c编写的有多种语言绑定例如 Node.js、 Python、 Swift、 .NET、 Qml。</p>
+<p>一般我们都使用js去编写frida脚本因为js的异常处理机制非常棒相比于其他语言更高效好用。</p>
+<p><strong>frida-core</strong></p>
+<p>frida-core的功能有进程注入、进程间通信、会话管理、脚本生命周期管理等功能，屏蔽部分底层的实现细节并给最终用户提供开箱即用的操作接口。而这一切的实现都在 frida-core 之中。</p>
+<p>正如名字所言，这其中包含了 frida 相关的大部分关键模块和组件，比如 frida-server、frida-gadget、frida-agent、frida-helper、frida-inject 以及之间的互相通信底座。</p>
+<p><strong>frida-gum</strong></p>
+<p>frida-gum是基于inline-hook实现的他还有很多丰富的功能比如用于代码跟踪 Stalker、用于内存访问监控的MemoryAccessMonitor，以及符号查找、栈回溯实现、内存扫描、动态代码生成和重定位等。</p>
+<p><strong>Interceptor</strong></p>
+<p>Interceptor 是 inline-hook 的封装。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">GumInterceptor * interceptor;</span><br><span class="line">GumInvocationListener * listener;</span><br><span class="line">gum_init ();</span><br><span class="line">interceptor = gum_interceptor_obtain ();</span><br><span class="line">//GumInvocationListener*的接口</span><br><span class="line">listener = g_object_new (EXAMPLE_TYPE_LISTENER, NULL);</span><br><span class="line"></span><br><span class="line">// 开始 hook `open` 函数</span><br><span class="line">gum_interceptor_begin_transaction (interceptor);</span><br><span class="line">gum_interceptor_attach_listener (interceptor,</span><br><span class="line">      GSIZE_TO_POINTER (gum_module_find_export_by_name (NULL, &quot;open&quot;)),</span><br><span class="line">      listener,</span><br><span class="line">      GSIZE_TO_POINTER (EXAMPLE_HOOK_OPEN));</span><br><span class="line">gum_interceptor_end_transaction (interceptor);</span><br><span class="line"></span><br><span class="line">// 测试 hook 效果</span><br><span class="line">close (open (&quot;/etc/hosts&quot;, O_RDONLY));</span><br><span class="line"></span><br><span class="line">// 结束 hook</span><br><span class="line">gum_interceptor_detach_listener (interceptor, listener);</span><br><span class="line">g_object_unref (listener);</span><br><span class="line">g_object_unref (interceptor);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Stalker</strong></p>
+<p>潜行者又称为尾行痴汉，可以实现指定线程中所有函数、所有基本块、甚至所有指令的跟踪但是有很大的缺点比如在32位或者thumb下问题很大,一般想使用指令跟踪都是使用内存断点或者unidbg模拟执行so但是有很多问题，内存断点的反调试倒是很容易解决但是性能是一个很大的缺陷代码触发断点后会先中断到内核态，然后再返回到用户态(调试器)执行跟踪回调，处理完后再返回内核态，然后再回到用户态继续执行，这来来回回的黄花菜都凉了。</p>
+<p>但Unidbg的使用门槛动不动就补环境，龙哥说样本和Unidbg之间摩擦出的火花才是最迷人的。或者说人话——“Unidbg怎么又报错了，我该怎么办？”</p>
+<p>Stalker的简单使用</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Interceptor.attach(addr, &#123;</span><br><span class="line">       onEnter: function (args) &#123;</span><br><span class="line">           this.args0 = args[0];</span><br><span class="line">           this.tid = Process.getCurrentThreadId();</span><br><span class="line">           //跟随</span><br><span class="line">           Stalker.follow(this.tid, &#123;</span><br><span class="line">               events: &#123;//事件</span><br><span class="line">                   call: true,//呼叫</span><br><span class="line">                   ret: false,//返回</span><br><span class="line">                   exec: true,//执行</span><br><span class="line">                   block: false,//块</span><br><span class="line">                   compile: false//编译</span><br><span class="line">               &#125;,</span><br><span class="line">               //接收</span><br><span class="line">               onReceive(events)&#123;</span><br><span class="line">                   for (const [index,value] of Stalker.parse(events)) &#123;</span><br><span class="line">                       console.log(index,value);</span><br><span class="line">                       //findModuleByAddress    &#123;&quot;name&quot;:&quot;libc.so&quot;,&quot;base&quot;:&quot;0x7d1f0af000&quot;,&quot;size&quot;:3178496,&quot;path&quot;:&quot;/apex/com.android.runtime/lib64/bionic/libc.so&quot;&#125;</span><br><span class="line">                       //console.log(&quot;tuzi&quot;,Process.findModuleByAddress(0x7d1f13adb8));</span><br><span class="line"></span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               // onCallSummary(summay)&#123;</span><br><span class="line">               //console.log(&quot;onCallSummary&quot;+JSON.stringify(summay));</span><br><span class="line">               // &#125;,</span><br><span class="line">           &#125;);</span><br><span class="line">       &#125;, onLeave: function (retval) &#123;</span><br><span class="line">           Stalker.unfollow(this.tid);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Stalker也可以用来还原ollvm混淆 记录函数的真实执行地址结合ida反汇编没执行的代码都nop掉可以很大程度上帮助辅助混淆算法分析当然可能不太准确但也是一种非常棒的思路。</p>
+<p>Stalker的功能实现，在线程即将执行下一条指令前，先将目标指令拷贝一份到新建的内存中，然后在新的内存中对代码进行插桩，如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311260017427.webp" alt="img"></p>
+<p>这其中使用到了代码动态重编译的方法，好处是原本的代码没有被修改，因此即便代码有完整性校验也不影响，另外由于执行过程都在用户态，省去了多次中断内核切换，性能损耗也达到了可以接受的水平。由于代码的位置发生了改变，如前文 Interceptor 一样，同样要对代码进行重定位的修复。</p>
+<p>内存监控</p>
+<p>MemoryAccessMonitor可以实现对指定内存区间的访问监控，在目标内存区间发生读写行为时可以触发用户指定的回调函数。</p>
+<p>通过阅读源码发现这个功能的实现方法非常简洁，本质上是将目标内存页设置为不可读写，这样在发生读写行为时会触发事先注册好的中断处理函数，其中会调用到用户使用 gum_memory_access_monitor_new 注册的回调方法中。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//C 代码</span><br><span class="line">gboolean</span><br><span class="line">gum_memory_access_monitor_enable (GumMemoryAccessMonitor * self,</span><br><span class="line">                                  GError ** error)</span><br><span class="line">&#123;</span><br><span class="line">  if (self-&gt;enabled)</span><br><span class="line">    return TRUE;</span><br><span class="line">  // ...</span><br><span class="line">  self-&gt;exceptor = gum_exceptor_obtain ();</span><br><span class="line">  gum_exceptor_add (self-&gt;exceptor, gum_memory_access_monitor_on_exception,</span><br><span class="line">      self);</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//js代码</span><br><span class="line">function read_write_break()&#123;</span><br><span class="line">    function hook_dlopen(addr, soName, callback) &#123;</span><br><span class="line">        Interceptor.attach(addr, &#123;</span><br><span class="line">            onEnter: function (args) &#123;</span><br><span class="line">                var soPath = args[0].readCString();</span><br><span class="line">                if(soPath.indexOf(soName) != -1) hook_call_constructors();</span><br><span class="line">            &#125;, onLeave: function (retval) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    var dlopen = Module.findExportByName(&quot;libdl.so&quot;, &quot;dlopen&quot;);</span><br><span class="line">    var android_dlopen_ext = Module.findExportByName(&quot;libdl.so&quot;, &quot;android_dlopen_ext&quot;);</span><br><span class="line">    hook_dlopen(dlopen, &quot;libaes.so&quot;, set_read_write_break);</span><br><span class="line">    hook_dlopen(android_dlopen_ext, &quot;libaes.so&quot;, set_read_write_break);</span><br><span class="line"></span><br><span class="line">    function set_read_write_break()&#123;</span><br><span class="line">        //实现一个异常回调   处理好这个异常就可以正常返回</span><br><span class="line">        Process.setExceptionHandler(function(details) &#123;</span><br><span class="line">            console.log(JSON.stringify(details, null, 2));</span><br><span class="line">            console.log(&quot;lr&quot;, DebugSymbol.fromAddress(details.context.lr));</span><br><span class="line">            console.log(&quot;pc&quot;, DebugSymbol.fromAddress(details.context.pc));</span><br><span class="line">            Memory.protect(details.memory.address, Process.pointerSize, &#x27;rwx&#x27;);</span><br><span class="line">            console.log(Thread.backtrace(details.context, Backtracer.ACCURATE).map(DebugSymbol.fromAddress).join(&#x27;\n&#x27;) + &#x27;\n&#x27;);</span><br><span class="line">            return true;</span><br><span class="line">        &#125;);</span><br><span class="line">        var addr = Module.findBaseAddress(&quot;libaes.so&quot;).add(0x6666);</span><br><span class="line">        Memory.protect(addr, 8, &#x27;---&#x27;); //修改内存页的权限</span><br><span class="line">        /**</span><br><span class="line">         * 比如有一个地址是0x12345678  我想看一下是那个代码去访问了这个地址</span><br><span class="line">         * 我只需要把这个内存地址置空 有函数去访问这个地址时 就会触发非法访问异常</span><br><span class="line">         * 比较鸡肋这种方法 这种方法会一次修改一个内存页  并且触发一次就无效了</span><br><span class="line">         */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>hook原理</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.注入进程</span><br><span class="line">ptrace</span><br><span class="line">dlopen</span><br><span class="line">2.hook 目标函数</span><br><span class="line">2.1 Java Hook</span><br><span class="line">Static Field Hook：静态成员hook</span><br><span class="line">Method Hook：函数hook</span><br><span class="line">2.2 Native So Hook</span><br><span class="line">GOT Hook：全局偏移表hook</span><br><span class="line">SYM Hook：符号表hook</span><br><span class="line">Inline Hook：函数内联hook</span><br><span class="line">执行自身代码</span><br><span class="line">获取敏感信息</span><br><span class="line">修改返回值</span><br><span class="line">etc.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>frida注入的主要思路就是找到目标进程,使用ptrace跟踪目标进程获取mmap，dlpoen，dlsym等函数库的便宜获取mmap在目标进程申请一段内存空间将在目标进程中找到存放[frida-agent-32&#x2F;64.so]的空间启动执行各种操作由agent去实现。</p>
+<p>补充：frida注入之后会在远端进程分配一段内存将agent拷贝过去并在目标进程中执行代码，执行完成后会 detach 目标进程，这也是为什么在 frida 先连接上目标进程后还可以用gdb&#x2F;ida等调试器连接，而先gdb连接进程后 frida 就无法再次连上的原因(frida在注入时只会ptrace一下下注入完毕后就会结束ptrace所以ptrace占坑这种反调试使用spawn方式启动即可)。frida-agent 注入到目标进程并启动后会启动一个新进程与 host 进行通信，从而 host 可以给目标进行发送命令，比如执行代码，激活&#x2F;关闭 hook，同时也能接收到目标进程的执行返回以及异步事件信息等。</p>
+<p><strong>hook java层</strong></p>
+<p>frida 的 hook 区分了 art 模式和 dalvik 模式。</p>
+<h2 id="dalvik-模式"><a href="#dalvik-模式" class="headerlink" title="dalvik 模式"></a><strong>dalvik 模式</strong></h2><h5 id="把-java-函数变成-native-函数，然后修改入口信息为自定义函数信息。"><a href="#把-java-函数变成-native-函数，然后修改入口信息为自定义函数信息。" class="headerlink" title="把 java 函数变成 native 函数，然后修改入口信息为自定义函数信息。"></a>把 java 函数变成 native 函数，然后修改入口信息为自定义函数信息。</h5><p>将Java函数转换为Native函数并修改入口信息为自定义函数信息的过程具有一定的意义和用途，例如：</p>
+<ol>
+<li><strong>性能优化和加速</strong>：Native函数通常以原生代码实现，可以直接调用底层系统功能或优化算法，相比Java函数在某些场景下具有更高的执行效率和更低的延迟。通过将关键的Java函数转换为Native函数，可以提高应用程序的性能和响应速度。</li>
+<li><strong>与底层系统交互</strong>：Native函数可以直接与底层系统进行交互，调用底层库、操作系统接口或硬件功能。这对于需要与底层系统进行紧密集成的应用程序或需要访问底层资源的任务非常有用。</li>
+<li><strong>逆向工程和代码修改</strong>：通过将Java函数转换为Native函数并修改入口信息，可以实现对已编译代码的修改和定制。这在逆向工程、代码注入、破解游戏或应用程序等方面具有应用场景。</li>
+<li><strong>调试和分析</strong>：通过将Java函数转换为Native函数，可以在调试过程中更容易地跟踪和分析代码。Native函数的调试通常比Java函数更直接且更容易理解，可以更深入地研究和解决问题。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311260017474.png" alt="img"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">struct Method &#123;  </span><br><span class="line">    ClassObject* clazz;/* method所属的类publicnative等*/</span><br><span class="line">    u4           accessFlags; /* 访问标记 */</span><br><span class="line">    u2           methodIndex; //method索引</span><br><span class="line">    //三个size为边界值，对于native函数，这3个size均等于参数列表的size</span><br><span class="line">    u2              registersSize;  /* ins + locals */</span><br><span class="line">    u2              outsSize;</span><br><span class="line">    u2              insSize;</span><br><span class="line">    const char*     name;//函数名称</span><br><span class="line">/*</span><br><span class="line">* Method prototype descriptor string (return and argument types)</span><br><span class="line">*/</span><br><span class="line">    DexProto        prototype;</span><br><span class="line">    /* short-form method descriptor string */</span><br><span class="line">    const char*     shorty;</span><br><span class="line">    /*</span><br><span class="line">     * The remaining items are not used for abstract or native methods.</span><br><span class="line">     * (JNI is currently hijacking &quot;insns&quot; as a function pointer, set</span><br><span class="line">     * after the first call.  For internal-native this stays null.)</span><br><span class="line">     */</span><br><span class="line">    /* the actual code */</span><br><span class="line">    const u2*       insns;          /* instructions, in memory-mapped .dex */</span><br><span class="line">    /* cached JNI argument and return-type hints */</span><br><span class="line">    int             jniArgInfo;</span><br><span class="line">    /*</span><br><span class="line">     * Native method ptr; could be actual function or a JNI bridge.  We</span><br><span class="line">     * don&#x27;t currently discriminate between DalvikBridgeFunc and</span><br><span class="line">     * DalvikNativeFunc; the former takes an argument superset (i.e. two</span><br><span class="line">     * extra args) which will be ignored.  If necessary we can use</span><br><span class="line">     * insns==NULL to detect JNI bridge vs. internal native.</span><br><span class="line">     */</span><br><span class="line">    DalvikBridgeFunc nativeFunc;</span><br><span class="line">    /*</span><br><span class="line">     * Register map data, if available.  This will point into the DEX file</span><br><span class="line">     * if the data was computed during pre-verification, or into the</span><br><span class="line">     * linear alloc area if not.</span><br><span class="line">     */</span><br><span class="line">    const RegisterMap* registerMap;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//为空就直接返回</span><br><span class="line">function replaceDalvikImplementation (fn) &#123;</span><br><span class="line">  if (fn === null &amp;&amp; dalvikOriginalMethod === null) &#123;</span><br><span class="line">    return;</span><br><span class="line">  &#125; </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">//备份原来的method,</span><br><span class="line">  if (dalvikOriginalMethod === null) &#123;</span><br><span class="line">    dalvikOriginalMethod = Memory.dup(methodId, DVM_METHOD_SIZE);</span><br><span class="line">    dalvikTargetMethodId = Memory.dup(methodId, DVM_METHOD_SIZE);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  if (fn !== null) &#123;</span><br><span class="line">   //自定的代码</span><br><span class="line">   //使用自定义函数 (fn) 实现需要替换的函数 (f)，并将结果保存在变  量 implementation 中。</span><br><span class="line">    implementation = implement(f, fn);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //计算参数的总大小 (argsSize)。根据参数类型 (argTypes) 遍历累加每个参数的大小 (size)，并在实例方法 (type === INSTANCE_METHOD) 的情况下增加 1。</span><br><span class="line">    let argsSize = argTypes.reduce((acc, t) =&gt; (acc + t.size), 0);</span><br><span class="line">    if (type === INSTANCE_METHOD) &#123;</span><br><span class="line">      argsSize++;</span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line">    // 把method变成native函数 </span><br><span class="line">    /*</span><br><span class="line">     * make method native (with kAccNative)</span><br><span class="line">     * insSize and registersSize are set to arguments size</span><br><span class="line">     */</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">//将方法的访问标记 (accessFlags) 设置为 Native 函数标记 (kAccNative)。将寄存器大小 (registersSize)、输出大小 (outsSize) 和输入大小 (insSize) 设置为参数大小 (argsSize)。  const accessFlags=(Memory.readU32(methodId.add(DVM_METHOD_OFFSET_ACCESS_FLAGS)) | kAccNative) &gt;&gt;&gt; 0;</span><br><span class="line">    const registersSize = argsSize;</span><br><span class="line">    const outsSize = 0;</span><br><span class="line">    const insSize = argsSize;</span><br><span class="line">Memory.writeU32(methodId.add(DVM_METHOD_OFFSET_ACCESS_FLAGS), accessFlags);  </span><br><span class="line">//是一个用于将无符号 32 位整数写入内存地址的函数。在给定的代码中，它用于修改指定内存地址上的值。</span><br><span class="line">Memory.writeU16(methodId.add(DVM_METHOD_OFFSET_REGISTERS_SIZE), registersSize);</span><br><span class="line">Memory.writeU16(methodId.add(DVM_METHOD_OFFSET_OUTS_SIZE), outsSize);  Memory.writeU16(methodId.add(DVM_METHOD_OFFSET_INS_SIZE), insSize);   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//计算 JNI 参数信息 (jniArgInfo) 并将其写入方法结构体的相应字段</span><br><span class="line">Memory.writeU32(methodId.add(DVM_METHOD_OFFSET_JNI_ARG_INFO), computeDalvikJniArgInfo(methodId));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //调用dvmUseJNIBridge为这个Method设置一个Bridge,本质上是修改结构体中的nativeFunc为自定义的implementation函数</span><br><span class="line">    //调用 dvmUseJNIBridge 函数将自定义函数的指针设置为 Method 结构体的 nativeFunc 字段，从而将其作为 Native 函数的入口</span><br><span class="line">    api.dvmUseJNIBridge(methodId, implementation);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">//将修改后的函数 (f) 添加到 patchedMethods 集合中，表示已经进行了修改。</span><br><span class="line">    patchedMethods.add(f);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    patchedMethods.delete(f);</span><br><span class="line">//如果传入的自定义函数 (fn) 为 null，则表示需要恢复原始函数的状态：从备份的 dalvikOriginalMethod 中恢复原始函数的内容，将其复制回 methodId。</span><br><span class="line">    Memory.copy(methodId, dalvikOriginalMethod, DVM_METHOD_SIZE);</span><br><span class="line">//将实现函数 (implementation) 设置为 null</span><br><span class="line">    implementation = null;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这样，通过调用 replaceDalvikImplementation 函数，可以将 Java 函数转换为 Native 函数，并将其入口信息设置为自定义函数的信息。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>art 模式</strong></p>
+<p>art模式也是需要将java 函数变成 native 函数但是不同于dalvik，art下有两种解释器一种汇编解释器一种smali解释器。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">quick code 模式：执行 arm 汇编指令</span><br><span class="line">Interpreter 模式：由解释器解释执行 Dalvik 字节码</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic4.zhimg.com/80/v2-26cc59ba4268ac2a54da00d411173c5f_1440w.webp" alt="img"></p>
+<p>1.如果函数已经存在quick code, 则指向这个函数对应的 quick code的起始地址，而当quick code不存在时，它的值则会代表其他的意义。</p>
+<p>2.当一个 java 函数不存在 quick code时，它的值是函数artQuickToInterpreterBridge 的地址，用以从 quick 模式切换到 Interpreter 模式来解释执行 java 函数代码。</p>
+<p>3.当一个 java native（JNI）函数不存在 quick code时，它的值是函数 art_quick_generic_jni_trampoline 的地址，用以执行没有quick code的 jni 函数。</p>
+<p>所以 frida 要将 java method 转为 native method，需要将ARTMethod 结构进行如下修改：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">patchMethod(methodId, &#123;</span><br><span class="line">  //jnicode入口entry_point_from_jni_改为自定义的代码</span><br><span class="line">  &#x27;jniCode&#x27;: implementation,</span><br><span class="line">  //修改为access_flags_为native</span><br><span class="line">  &#x27;accessFlags&#x27;: (Memory.readU32(methodId.add(artMethodOffset.accessFlags)) | kAccNative | kAccFastNative) &gt;&gt;&gt; 0,</span><br><span class="line">  //art_quick_generic_jni_trampoline函数的地址</span><br><span class="line">  &#x27;quickCode&#x27;: api.artQuickGenericJniTrampoline,</span><br><span class="line">  //artInterpreterToCompiledCodeBridge函数地址</span><br><span class="line">  &#x27;interpreterCode&#x27;: api.artInterpreterToCompiledCodeBridge</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81frida%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">一、frida介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81frida%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">二、frida的代码结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dalvik-%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">dalvik 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8A%8A-java-%E5%87%BD%E6%95%B0%E5%8F%98%E6%88%90-native-%E5%87%BD%E6%95%B0%EF%BC%8C%E7%84%B6%E5%90%8E%E4%BF%AE%E6%94%B9%E5%85%A5%E5%8F%A3%E4%BF%A1%E6%81%AF%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E4%BF%A1%E6%81%AF%E3%80%82"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">把 java 函数变成 native 函数，然后修改入口信息为自定义函数信息。</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida%E5%BA%95%E5%B1%82(%E4%B8%8D%E6%98%AF%E5%BE%88%E6%87%82)/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

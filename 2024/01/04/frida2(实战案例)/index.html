@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="当我们获取到Java类之后，我们直通过接 ..implementations &#x3D; function() {}的方式来hook wrapper类的method方法，不管是实例方法还是静态方法都可以。 实战案例  java.cast,约等于强制类型转换  arg1就是要插入数据的表名， arg2是表的主键， arg3是要插入表的数据的字段名称跟值的集合。这样， 我们就可以轻松拿到每条消息的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eeeeerror">
+<meta property="og:url" content="http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/index.html">
+<meta property="og:site_name" content="eeeeerror">
+<meta property="og:description" content="当我们获取到Java类之后，我们直通过接 ..implementations &#x3D; function() {}的方式来hook wrapper类的method方法，不管是实例方法还是静态方法都可以。 实战案例  java.cast,约等于强制类型转换  arg1就是要插入数据的表名， arg2是表的主键， arg3是要插入表的数据的字段名称跟值的集合。这样， 我们就可以轻松拿到每条消息的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251340932.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251340199.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251341626.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251349144.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251350818.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251507042.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251507330.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251508621.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251510718.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251519649.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251519199.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251527635.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251519870.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251520417.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251521425.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251523218.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251524589.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251526602.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251526918.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251528017.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251528125.png">
+<meta property="article:published_time" content="2024-01-04T06:55:39.469Z">
+<meta property="article:modified_time" content="2023-11-25T07:44:55.784Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251340932.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>eeeeerror</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/01/04/frida3(%E7%9C%8B%E4%B9%A61)/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/01/04/frida/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">实战案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E8%AF%B7%E6%B1%82"><span class="toc-number">1.0.1.</span> <span class="toc-text">模拟请求</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-04T06:55:39.469Z" class="dt-published" itemprop="datePublished">2024-01-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251340932.webp" alt="img"></p>
+<p>当我们获取到Java类之后，我们直通过接 <wrapper>.<method>.implementations &#x3D; function() {}的方式来hook wrapper类的method方法，不管是实例方法还是静态方法都可以。</p>
+<h2 id="实战案例"><a href="#实战案例" class="headerlink" title="实战案例"></a>实战案例</h2><p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251340199.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251341626.webp" alt="img"></p>
+<p>java.cast,约等于强制类型转换</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251349144.webp" alt="img"></p>
+<p>arg1就是要插入数据的表名， arg2是表的主键， arg3是要插入表的数据的字段名称跟值的集合。这样， 我们就可以轻松拿到每条消息的内容和发送者等相关信息。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251350818.png" alt="img"></p>
+<p>我们先来看一下，当我们点击打开红包之时发生了什么呢? 下面是反编译得到的打开红包按钮的点击事件：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251507042.png" alt="img"></p>
+<p>这行代码其实就是发送抢红包的请求, ad 就是一个网络请求类, 那么需要构成这个请求又需要哪些参数呢?</p>
+<p>我们单独看看 ad 类的创建：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251507330.png" alt="img"></p>
+<p>其中第1,2,3,4,9个参数都是来自luckyMoneyReceiveUI.kRG, 第8个参数是固定的 “v1.0”</p>
+<p>接下来我们来打印一下第5,6,7个参数是什么：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251508621.png" alt="img"></p>
+<p>重新加载这段js代码, 然后我们打开一个红包, 我们可以看到控制台打印如下信息：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251510718.png" alt="img"></p>
+<p>第5,6个参数其实是自己的头像跟昵称信息,第7个是发送者的信息，而第4个参数跟上面红包内容里面的nativeurl的值是一样的。</p>
+<p>那luckyMoneyReceiveUI.kRG 中的msgType,bxk,kLZ,ceR,kRC这些要怎么得到呢?</p>
+<p>luckyMoneyReceiveUI.kRG 这个字段的类型是: com.tencent.mm.plugin.luckymoney.b.ag，ag类跟之前提到的ad类一样, 都是一个请求类, 他们都是继承同一个类。其中, msgType是固定的 1，bxk,kLZ,ceR 是在ag的构造方法里面就被初始化的：<img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251519649.png" alt="img"></p>
+<p>而kRC则是在里面的a方法里面被赋值的：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251519199.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251527635.png" alt="img"></p>
+<p>这个a方法是请求类发起请求之后的一个回调，而在 LuckyMoneyReceiveUI的 OnCreate 方法里面我们可以看到 com.tencent.mm.plugin.luckymoney.b.ag 是怎么被构造出来的：<img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251519870.webp" alt="img"></p>
+<p>第一个参数是nativeurl中的channelid;</p>
+<p>第二个参数是nativeurl中的sendid;</p>
+<p>第三个参数是nativeurl本身;</p>
+<p>第四个参数可以用0;</p>
+<p>第五个参数是也是固定的 “v1.0”</p>
+<p>经过上面的分析之后, 我们的思路就清晰了, 在收到红包信息后我们解析出红包信息里面nativeurl, channelid, sendid, 根据这些参数发送一个com.tencent.mm.plugin.luckymoney.b.ag的请求, 之后得到timingIdentifier, 最后根据得到的timingIdentifier 再发送一个com.tencent.mm.plugin.luckymoney.b.ad的请求就可以抢到红包了。</p>
+<p>3</p>
+<h4 id="模拟请求"><a href="#模拟请求" class="headerlink" title="模拟请求"></a>模拟请求</h4><p>到这里我们也就剩最后一个问题了, 那就是怎么把请求发送出去？这个我们同样可以看看微信, 我们跟踪到红包界面的请求都是通过下面的方法发送的：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251520417.png" alt="img"></p>
+<p>上面的g.Eh().dpP得到的是一个专门发送请求的Network, 得到这个Network之后我们就可以调用他的a方法把这个请求发送出去。需要注意的是frida不支持直接通过.dpP的方式拿到属性, 不过没关系, 我们可以通过反射的方式来获取：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251521425.png" alt="img"></p>
+<p>得到Network之后我们就开始发送请求了：</p>
+<p>第一步是收到红包信息之后要解析出ContentValues里面的信息,并根据解析出的内容发送ag请求。<img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251523218.png" alt="img"></p>
+<p>我们单独把红包信息的content（具体内容）的解析拿出来：<img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251524589.png" alt="img"></p>
+<p>nativeurl的具体内容如下：<img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251526602.webp" alt="img"></p>
+<p>通过上面的解析之后我们就可以得到如下的info：<img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251526918.png" alt="img"></p>
+<p>第二步是Hook ag请求的a方法, 在里面我们可以拿到timingIdentifier的值：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251528017.png" alt="img"></p>
+<p>注意:当一个类里面有重载的方法的时候, 我们需要用.overload(paramtype…)来表示我们hook的是哪个重载方法。</p>
+<p>最后我们还需要改造一下之前Hook的SQL的insert方法, 我们需要过滤出表名为message,类型为436207665的消息：<img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311251528125.png" alt="img"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">实战案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E8%AF%B7%E6%B1%82"><span class="toc-number">1.0.1.</span> <span class="toc-text">模拟请求</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

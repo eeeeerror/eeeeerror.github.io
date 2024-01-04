@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="# apktool d App-debug.apk 使用d进行反编译并且储存在App-debug文件里面  反编译后到app-debug文件夹里面看每个类都对应这一个smali文件 smali在Java字节码中，寄存器都是32位的，能够支持任何类型，64位类型（Long&#x2F;Double）用2个寄存器表示 p命名法和v命名法:  p命名法通常用于表示函数参数，比如p0、p1等 ​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eeeeerror">
+<meta property="og:url" content="http://example.com/2024/01/04/app(apktool&smail)/index.html">
+<meta property="og:site_name" content="eeeeerror">
+<meta property="og:description" content="# apktool d App-debug.apk 使用d进行反编译并且储存在App-debug文件里面  反编译后到app-debug文件夹里面看每个类都对应这一个smali文件 smali在Java字节码中，寄存器都是32位的，能够支持任何类型，64位类型（Long&#x2F;Double）用2个寄存器表示 p命名法和v命名法:  p命名法通常用于表示函数参数，比如p0、p1等 ​">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272213931.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272222765.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272246242.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311281104407.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311281106205.png">
+<meta property="article:published_time" content="2024-01-04T06:55:39.465Z">
+<meta property="article:modified_time" content="2023-11-30T07:56:30.483Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272213931.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>eeeeerror</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/01/04/apk%EF%BC%88%E7%AD%BE%E5%90%8D%EF%BC%89/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/app(apktool&amp;smail)/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/app(apktool&amp;smail)/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/app(apktool&amp;smail)/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#smali"><span class="toc-number">1.</span> <span class="toc-text">smali</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">引用类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">对象类型：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">数组类型：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E5%8E%BB%E5%BC%B9%E6%A1%86"><span class="toc-number"></span> <span class="toc-text">实战去弹框</span></a>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-04T06:55:39.465Z" class="dt-published" itemprop="datePublished">2024-01-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p># apktool d App-debug.apk</p>
+<p>使用d进行反编译并且储存在App-debug文件里面</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272213931.png" alt="image-20231127221353881"></p>
+<p>反编译后到app-debug文件夹里面看每个类都对应这一个smali文件</p>
+<h3 id="smali"><a href="#smali" class="headerlink" title="smali"></a>smali</h3><p>在Java字节码中，寄存器都是32位的，能够支持任何类型，64位类型（Long&#x2F;Double）用2个寄存器表示</p>
+<p>p命名法和v命名法:  p命名法通常用于表示函数参数，比如p0、p1等</p>
+<p>​									v命名法用于表示函数内部的变量，比如v0、v1等</p>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272222765.png" alt="image-20231127222232731"></p>
+<h4 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h4><h5 id="对象类型："><a href="#对象类型：" class="headerlink" title="对象类型："></a>对象类型：</h5><p>​	“Lpackage&#x2F;name&#x2F;ObjectName;”的形式表示。</p>
+<p>​	其中，L表示这是一个对象类型，“;”标识对象名称的结束，</p>
+<p>​	中间的package&#x2F;name表示对象的包名，ObjectName表示对象名。</p>
+<p>​	最终这样的形式相当于java源代码中package.name.ObjectName类的完整表示，	比如com.roysue.demo02.MainActivity 类 ， </p>
+<p>​	最 终 表 示 为“Lcom&#x2F;roysue&#x2F;demo02&#x2F;MainActivity;”</p>
+<p>if-eqz p1, :cond_0（如果p1寄存器中的内容为0就跳转到:cond_0处）</p>
+<h5 id="数组类型："><a href="#数组类型：" class="headerlink" title="数组类型："></a>数组类型：</h5><p>​	只需要在类型的前面加上“[”即可</p>
+<p>​	[Ljava&#x2F;lang&#x2F;String表示一个String字符串的数组类型</p>
+<p>“#”用于注释</p>
+<p>#smali的文件头三行描述了类的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.class &lt;访问权限&gt; [关键修饰字] &lt;类名&gt;;</span><br><span class="line">.super &lt;父类名&gt;;</span><br><span class="line">.source &lt;源文件名&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272246242.png" alt="image-20231127224605201"></p>
+<p>“Lcom&#x2F;roysue&#x2F;demo02&#x2F; MainActivity;”的表示方式符合字节码的相关约定，即表示MainActivity类。</p>
+<p>.super后跟着的是类的父类，与Java中的extends关键词后跟着AppCompatActivity类是一致的。</p>
+<p>.source关键词后跟着的是当前类的源文件名。需要注意的是，第三行的.source关键词后的文件名可以通过ProGuard优化器去除掉。</p>
+<p>.field关键词后跟着成员变量的访问权限</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311281104407.png" alt="image-20231128110406333"></p>
+<p>函数的声明以.method关键词开始，以.end method关键词结束</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311281106205.png" alt="image-20231128110607168"></p>
+<p>.locals关键词用于表示函数中非参数的变量的多少</p>
+<p>.registers关键词则表示函数中使用寄存器的数量</p>
+<p>.param关键词用于声明方法中的参数名,比如:.param p1, “savedInstanceState”表明onCreate()函数的参数名为”savedInstanceState”；</p>
+<p>.line参数则保存着相应代码在Java源文件中的行号信息</p>
+<p>常量操作指令主要是const相关指令,方法调用指令是以invoke关键词开头的一类指令，通常用于 调 用 外 部 函 数 其基本格式 invoke-kind{vA,vB,vC},mehtod@DDDD</p>
+<p>mehtod@DDDD表示函数的引用；vA,vB,vC则表示函数的参数，其定义顺序与调用函数的参数一一 对 应 ；kind 则 代 表 被 调 用 的 类 型 ， 主 要 有 static 、 virtual 、super（被调用的函数是静态函数、正常的函数和父类函数等）</p>
+<p>签名</p>
+<h2 id="实战去弹框"><a href="#实战去弹框" class="headerlink" title="实战去弹框"></a><strong>实战去弹框</strong></h2>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#smali"><span class="toc-number">1.</span> <span class="toc-text">smali</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">引用类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">对象类型：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">数组类型：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E5%8E%BB%E5%BC%B9%E6%A1%86"><span class="toc-number"></span> <span class="toc-text">实战去弹框</span></a>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/app(apktool&amp;smail)/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/app(apktool&amp;smail)/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/app(apktool&amp;smail)/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/app(apktool&amp;smail)/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="项目源码与apk的差异：dex文件 (java文件夹中所有的Java类编译而成的二进制文件) .dex文件是Android系统虚拟机的可执行文件,所有的dex文件存储着APK整体业务逻辑的核心，因此它也是在逆向分析过程中关注的重点 resources.arsc文件，该文件是用于资源文件相关信息的文件 META-INF文件夹主要就是用于存储签名文件的,有利于重打包技术 123456789101112">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eeeeerror">
+<meta property="og:url" content="http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/index.html">
+<meta property="og:site_name" content="eeeeerror">
+<meta property="og:description" content="项目源码与apk的差异：dex文件 (java文件夹中所有的Java类编译而成的二进制文件) .dex文件是Android系统虚拟机的可执行文件,所有的dex文件存储着APK整体业务逻辑的核心，因此它也是在逆向分析过程中关注的重点 resources.arsc文件，该文件是用于资源文件相关信息的文件 META-INF文件夹主要就是用于存储签名文件的,有利于重打包技术 123456789101112">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272106533.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272145685.png">
+<meta property="article:published_time" content="2024-01-04T06:55:39.466Z">
+<meta property="article:modified_time" content="2023-11-27T14:11:24.001Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272106533.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>eeeeerror</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/01/04/frida/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/01/04/app(apktool&smail)/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#app%E5%8A%A0%E5%9B%BA"><span class="toc-number">1.</span> <span class="toc-text">app加固</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-04T06:55:39.466Z" class="dt-published" itemprop="datePublished">2024-01-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>项目源码与apk的差异：dex文件</p>
+<p>(java文件夹中所有的Java类编译而成的二进制文件)</p>
+<p>.dex文件是Android系统虚拟机的可执行文件,所有的dex文件存储着APK整体业务逻辑的核心，因此它也是在逆向分析过程中关注的重点</p>
+<p>resources.arsc文件，该文件是用于资源文件相关信息的文件</p>
+<p>META-INF文件夹主要就是用于存储签名文件的,有利于重打包技术</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">在安卓平台上，重打包技术通常是指将已有的安卓应用程序（APK）进行修改、重新打包或重新签名，以实现不同的目的，如应用定制、应用破解、应用逆向工程等。下面是几种常见的安卓重打包技术：</span><br><span class="line"></span><br><span class="line">反编译和重新编译：使用工具如Apktool、dex2jar和JD-GUI等，可以将APK文件反编译为其源代码（Smali或Java）和资源文件，然后对代码进行修改，最后重新编译成新的APK文件。</span><br><span class="line"></span><br><span class="line">修改资源文件：通过解压APK文件，可以修改其中的资源文件，例如图标、布局、字符串等，从而改变应用的外观和用户界面。</span><br><span class="line"></span><br><span class="line">修改配置文件：APK文件中的配置文件（如AndroidManifest.xml）包含应用的各种设置和权限信息。通过修改这些配置文件，可以实现一些特定的功能，如去除广告、修改权限等。</span><br><span class="line"></span><br><span class="line">动态链接库（Native Library）替换：某些应用程序使用C或C++编写的动态链接库（.so文件）来实现一些高性能或底层功能。通过替换这些动态链接库，可以修改应用的行为或注入自定义的代码。</span><br><span class="line"></span><br><span class="line">重新签名：应用程序在发布时通常都会经过签名，以验证应用的完整性和可信性。通过重新签名APK文件，可以修改应用的签名信息，从而绕过某些验证机制或伪装成其他应用。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>静态分析防止手段          	攻击手法</p>
+<p>​		1 .代码混淆                  1.动态调试</p>
+<p>​		2.动态加载</p>
+<p>动态分析防止手段</p>
+<p>​		1.运行时检测</p>
+<p>1.1例如：如果调用ptrace()函数对进程进行附加，那么会存在相应的特征点，比如&#x2F;proc&#x2F;<pid>&#x2F;status文件中的TracePid变量在进程被附加后会由0变为附加进程的pid</p>
+<p>IDA调试的服务端android_server64 的 进 程 pid 为 18174 ， demo02 的 进 程pid 为17887，当使用IDA附加到demo02进程后查看demo02进程的proc&#x2F;<pid>&#x2F;status 文 件 时 ， 会 发 现 TracerPid 的 值 变 成 了android_server64的进程pid</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272106533.png" alt="image-20231127210645463"></p>
+<p>1.2 指令执行时间差进行检测</p>
+<p>​		2.事先阻止</p>
+<p>2.1 双进程保护</p>
+<p>双进程保护是利用一个进程最多只能被一个进程ptrace附加的特性，事先在代码中自己fork一个子进程ptrace，ptrace自己就可以防止再被其他进程ptrace，也就变相地阻止了进程被调试</p>
+<h3 id="app加固"><a href="#app加固" class="headerlink" title="app加固"></a>app加固</h3><p>1.DEX加固：App加固的核心原理是将DEX整体加密后动态加载</p>
+<p>2.代码抽取保护：App加固的关键在于真正的代码数据并不与DEX的整体结构数据存储在一起，就算DEX被完整地从内存中dump（转储）出来，也无法看到真正的函数代码</p>
+<p>例子：，某DEX整体加固被dump出来之后，使用Jadx查看关键函数，发现其代码被nop这一无意义的代码填充了。这种加固的核心原理是利用私有函数，通过对自身进程的Hook来拦截函数被调用时的路径，在抽取的函数被真实调用之前，将无意义的代码数据填充到对应的代码区中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/eeeeerror/image//202311272145685.png" alt="image-20231127214548626"></p>
+<p>代码抽取保护通常在函数被第一次调用后就不再将函数内容重新置空，这也正是如今依然存在一些从内存中把DEX整体dump出来的方案，因为只需要在App运行时多触发几次程序逻，然后再进行DEX的dump，即可得到更加完整的DEX文件</p>
+<p>3.加壳保护手段——VMP与Dex2C</p>
+<p>VMP:其核心逻辑是将所有的代码使用自定义的解释器执行。这时的代码不再依赖于系统本身，即使获得了所有的函数内容，也是貌合神离、不知所云。这时唯一的解决方案可能是逆向对应的解释器，以找到与系统解释器的映射关系</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#app%E5%8A%A0%E5%9B%BA"><span class="toc-number">1.</span> <span class="toc-text">app加固</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/app(%E7%9C%8B%E4%B9%A6)/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
