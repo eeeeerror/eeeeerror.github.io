@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="访问所有端口策略为通过（ACCEPT）还是禁止（DROP）取决于配置--icc&#x3D;true（缺省值）还是 --icc&#x3D;false。当然，如果手动指定 --iptables&#x3D;false 则不会添加 iptables 规则 访问指定端口在通过 -icc&#x3D;false 关闭网络访问后，还可以通过 --link&#x3D;CONTAINER_NAME:ALIAS 选项来访问容器的开放端口 端口映射实现默认情况下，容器可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eeeeerror">
+<meta property="og:url" content="http://example.com/2024/01/16/docker(3)/index.html">
+<meta property="og:site_name" content="eeeeerror">
+<meta property="og:description" content="访问所有端口策略为通过（ACCEPT）还是禁止（DROP）取决于配置--icc&#x3D;true（缺省值）还是 --icc&#x3D;false。当然，如果手动指定 --iptables&#x3D;false 则不会添加 iptables 规则 访问指定端口在通过 -icc&#x3D;false 关闭网络访问后，还可以通过 --link&#x3D;CONTAINER_NAME:ALIAS 选项来访问容器的开放端口 端口映射实现默认情况下，容器可">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-16T10:34:55.438Z">
+<meta property="article:modified_time" content="2024-01-14T08:04:00.738Z">
+<meta property="article:author" content="xorr">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>eeeeerror</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/01/16/docker(1)/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/01/16/docker(2)/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/16/docker(3)/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/16/docker(3)/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/16/docker(3)/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/16/docker(3)/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/16/docker(3)/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/16/docker(3)/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%89%80%E6%9C%89%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.</span> <span class="toc-text">访问所有端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">访问指定端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">端口映射实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E8%AE%BF%E9%97%AE%E5%A4%96%E9%83%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">容器访问外部实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E8%AE%BF%E9%97%AE%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.</span> <span class="toc-text">外部访问容器实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-docker0-%E7%BD%91%E6%A1%A5"><span class="toc-number">6.</span> <span class="toc-text">配置 docker0 网桥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BD%91%E6%A1%A5"><span class="toc-number">7.</span> <span class="toc-text">自定义网桥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">8.</span> <span class="toc-text">编辑网络配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-HTTP-HTTPS-%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86"><span class="toc-number"></span> <span class="toc-text">配置 HTTP&#x2F;HTTPS 网络代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-dockerd-%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">为 dockerd 设置网络代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-docker-%E5%AE%B9%E5%99%A8%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">为 docker 容器设置网络代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-docker-build-%E8%BF%87%E7%A8%8B%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">为 docker build 过程设置网络代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E5%88%B0%E7%82%B9%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">创建一个点到点连接</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">xorr</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-16T10:34:55.438Z" class="dt-published" itemprop="datePublished">2024-01-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="访问所有端口"><a href="#访问所有端口" class="headerlink" title="访问所有端口"></a>访问所有端口</h2><p>策略为通过（<code>ACCEPT</code>）还是禁止（<code>DROP</code>）取决于配置<code>--icc=true</code>（缺省值）还是 <code>--icc=false</code>。当然，如果手动指定 <code>--iptables=false</code> 则不会添加 <code>iptables</code> 规则</p>
+<h2 id="访问指定端口"><a href="#访问指定端口" class="headerlink" title="访问指定端口"></a>访问指定端口</h2><p>在通过 <code>-icc=false</code> 关闭网络访问后，还可以通过 <code>--link=CONTAINER_NAME:ALIAS</code> 选项来访问容器的开放端口</p>
+<h2 id="端口映射实现"><a href="#端口映射实现" class="headerlink" title="端口映射实现"></a>端口映射实现</h2><p>默认情况下，容器可以主动访问到外部网络的连接，但是外部网络无法访问到容器</p>
+<h2 id="容器访问外部实现"><a href="#容器访问外部实现" class="headerlink" title="容器访问外部实现"></a>容器访问外部实现</h2><p>器所有到外部网络的连接，源地址都会被 NAT 成本地系统的 IP 地址。这是使用 <code>iptables</code> 的源地址伪装操作实现的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo iptables -t nat -nL</span><br><span class="line">...</span><br><span class="line">Chain POSTROUTING (policy ACCEPT)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">MASQUERADE  all  --  172.17.0.0/16       !172.17.0.0/16</span><br><span class="line">...</span><br><span class="line">所有从172.17.0.0/16子网出来，并且目标地址不在这个子网的数据包，都将进行源地址伪装（更改来源IP为宿主机的IP）后再发送出去。</span><br></pre></td></tr></table></figure>
+
+<p>上述规则将所有源地址在 <code>172.17.0.0/16</code> 网段，目标地址为其他网段（外部网络）的流量动态伪装为从系统网卡发出。MASQUERADE 跟传统 SNAT 的好处是它能动态从网卡获取地址</p>
+<h2 id="外部访问容器实现"><a href="#外部访问容器实现" class="headerlink" title="外部访问容器实现"></a>外部访问容器实现</h2><p>容器允许外部访问，可以在 <code>docker run</code> 时候通过 <code>-p</code> 或 <code>-P</code> 参数来启用。</p>
+<p>不管用那种办法，其实也是在本地的 <code>iptable</code> 的 nat 表中添加相应的规则。</p>
+<p>使用 <code>-P</code> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -t nat -nL</span><br><span class="line">...</span><br><span class="line">Chain DOCKER (2 references)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:49153 to:172.17.0.2:80</span><br><span class="line">所有前往TCP端口49153的数据包都将被重定向到在172.17.0.2上的80端口。这在Docker中常常被用于端口映射，让外部网络能访问到容器内部,的服务用户可以通过 -p IP:host_port:container_port 或 -p IP::port 来指定允许访问容器的主机上的 IP、接口等，以制定更严格的规则。</span><br></pre></td></tr></table></figure>
+
+<p>如果希望永久绑定到某个固定的 IP 地址，可以在 Docker 配置文件 <code>/etc/docker/daemon.json</code> 中添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;ip&quot;: &quot;0.0.0.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-docker0-网桥"><a href="#配置-docker0-网桥" class="headerlink" title="配置 docker0 网桥"></a>配置 docker0 网桥</h2><p>Docker 服务默认会创建一个 <code>docker0</code> 网桥（其上有一个 <code>docker0</code> 内部接口），它在内核层连通了其他的物理或虚拟网卡，这就将所有容器和本地主机都放到同一个物理网络	</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo brctl show</span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">docker0         8000.3a1d7362b4ee       no              veth65f9</span><br><span class="line">                                             vethdda6</span><br><span class="line">interfaces：这列列出了所有连接到该桥接设备的网络接口。在这个例子中，有两个接口：“veth65f9”和“vethdda6”。这些都是虚拟以太网接口，Docker为每个容器创建了一个，并连接到docker0桥接器。                   </span><br></pre></td></tr></table></figure>
+
+<p>每次创建一个新容器的时候，Docker 从可用的地址段中选择一个空闲的 IP 地址分配给容器的 eth0 端口。使用本地主机上 <code>docker0</code> 接口的 IP 作为所有容器的默认网关</p>
+<h2 id="自定义网桥"><a href="#自定义网桥" class="headerlink" title="自定义网桥"></a>自定义网桥</h2><p>除了默认的 <code>docker0</code> 网桥，用户也可以指定网桥来连接各个容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl stop docker</span><br><span class="line">$ sudo ip link set dev docker0 down</span><br><span class="line">$ sudo brctl delbr docker0</span><br></pre></td></tr></table></figure>
+
+<p>然后创建一个网桥 <code>bridge0</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo brctl addbr bridge0</span><br><span class="line">$ sudo ip addr add 192.168.5.1/24 dev bridge0</span><br><span class="line">$ sudo ip link set dev bridge0 up</span><br></pre></td></tr></table></figure>
+
+<p>在 Docker 配置文件 <code>/etc/docker/daemon.json</code> 中添加如下内容，即可将 Docker 默认桥接到创建的网桥上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;bridge&quot;: &quot;bridge0&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="编辑网络配置文件"><a href="#编辑网络配置文件" class="headerlink" title="编辑网络配置文件"></a>编辑网络配置文件</h2><p>Docker 1.2.0 开始支持在运行中的容器里编辑 <code>/etc/hosts</code>, <code>/etc/hostname</code> 和 <code>/etc/resolv.conf</code> 文件。</p>
+<p>但是这些修改是临时的，只在运行的容器中保留，容器终止或重启后并不会被保存下来，也不会被 <code>docker commit</code> 提交</p>
+<h1 id="配置-HTTP-HTTPS-网络代理"><a href="#配置-HTTP-HTTPS-网络代理" class="headerlink" title="配置 HTTP&#x2F;HTTPS 网络代理"></a>配置 HTTP&#x2F;HTTPS 网络代理</h1><h2 id="为-dockerd-设置网络代理"><a href="#为-dockerd-设置网络代理" class="headerlink" title="为 dockerd 设置网络代理"></a>为 dockerd 设置网络代理</h2><p>为 dockerd 创建配置文件夹。在docker的守护进程里面配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/systemd/system/docker.service.d</span><br></pre></td></tr></table></figure>
+
+<p>为 dockerd 创建 HTTP&#x2F;HTTPS 网络代理的配置文件，文件路径是 &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;docker.service.d&#x2F;http-proxy.conf 。并在该文件中添加相关环境变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Environment=&quot;HTTP_PROXY=http://proxy.example.com:8080/&quot;</span><br><span class="line">Environment=&quot;HTTPS_PROXY=http://proxy.example.com:8080/&quot;</span><br><span class="line">Environment=&quot;NO_PROXY=localhost,127.0.0.1,.example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>刷新配置并重启 docker 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="为-docker-容器设置网络代理"><a href="#为-docker-容器设置网络代理" class="headerlink" title="为 docker 容器设置网络代理"></a>为 docker 容器设置网络代理</h2><p><code>dockerd</code>和<code>docker</code>在Docker架构中起着不同的作用：<code>dockerd</code>是在后台运行，管理和运行容器的守护进程，而<code>docker</code>则是命令行客户端，为用户提供与Docker守护进程交互的接口。直接在docker里面</p>
+<p>更改 docker 客户端配置：创建或更改 ~&#x2F;.docker&#x2F;config.json，并在该文件中添加相关配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &quot;proxies&quot;:</span><br><span class="line"> &#123;</span><br><span class="line">   &quot;default&quot;:</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;httpProxy&quot;: &quot;http://proxy.example.com:8080/&quot;,</span><br><span class="line">     &quot;httpsProxy&quot;: &quot;http://proxy.example.com:8080/&quot;,</span><br><span class="line">     &quot;noProxy&quot;: &quot;localhost,127.0.0.1,.example.com&quot;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为-docker-build-过程设置网络代理"><a href="#为-docker-build-过程设置网络代理" class="headerlink" title="为 docker build 过程设置网络代理"></a>为 docker build 过程设置网络代理</h2><p>使用 “–build-arg” 指定 “docker build” 的相关环境变量,dockerfile里面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker build \</span><br><span class="line">    --build-arg &quot;HTTP_PROXY=http://proxy.example.com:8080/&quot; \</span><br><span class="line">    --build-arg &quot;HTTPS_PROXY=http://proxy.example.com:8080/&quot; \</span><br><span class="line">    --build-arg &quot;NO_PROXY=localhost,127.0.0.1,.example.com&quot; .</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建一个点到点连接"><a href="#创建一个点到点连接" class="headerlink" title="创建一个点到点连接"></a>创建一个点到点连接</h2><p>创建一对 <code>peer</code> 接口，分别放到两个容器中，配置成点到点链路类型即可</p>
+<p>找到进程号，然后创建网络命名空间的跟踪文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ docker inspect -f &#x27;&#123;&#123;.State.Pid&#125;&#125;&#x27; 1f1f4c1f931a</span><br><span class="line">2989</span><br><span class="line">$ docker inspect -f &#x27;&#123;&#123;.State.Pid&#125;&#125;&#x27; 12e343489d2f</span><br><span class="line">3004</span><br><span class="line">$ sudo mkdir -p /var/run/netns</span><br><span class="line">$ sudo ln -s /proc/2989/ns/net /var/run/netns/2989</span><br><span class="line">$ sudo ln -s /proc/3004/ns/net /var/run/netns/3004</span><br></pre></td></tr></table></figure>
+
+<p>创建peer接口然后配置路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ip link add A type veth peer name B</span><br><span class="line"></span><br><span class="line">$ sudo ip link set A netns 2989</span><br><span class="line">$ sudo ip netns exec 2989 ip addr add 10.1.1.1/32 dev A</span><br><span class="line">$ sudo ip netns exec 2989 ip link set A up</span><br><span class="line">$ sudo ip netns exec 2989 ip route add 10.1.1.2/32 dev A</span><br><span class="line"></span><br><span class="line">sudo ip netns exec 2989 &lt;命令&gt; 这个命令有很实际的用途。主要是用来在特定的网络命名空间中执行指定的命令。注解：网络命名空间是Linux命名空间的一种，它提供了隔离网络栈的功能。</span><br><span class="line">具体来说，每一个网络命名空间都有独立的网络设备、IP地址、路由表、防火墙规则等网络栈信息。当一个进程在某个网络命名空间中运行时，它只能看到和操作这个网络命名空间中的网络资源，就像这个网络命名空间是一个独立的网络环境一样。</span><br><span class="line"></span><br><span class="line">$ sudo ip link set B netns 3004</span><br><span class="line">$ sudo ip netns exec 3004 ip addr add 10.1.1.2/32 dev B</span><br><span class="line">$ sudo ip netns exec 3004 ip link set B up</span><br><span class="line">$ sudo ip netns exec 3004 ip route add 10.1.1.1/32 dev B</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%89%80%E6%9C%89%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.</span> <span class="toc-text">访问所有端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">访问指定端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">端口映射实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E8%AE%BF%E9%97%AE%E5%A4%96%E9%83%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">容器访问外部实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E8%AE%BF%E9%97%AE%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.</span> <span class="toc-text">外部访问容器实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-docker0-%E7%BD%91%E6%A1%A5"><span class="toc-number">6.</span> <span class="toc-text">配置 docker0 网桥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BD%91%E6%A1%A5"><span class="toc-number">7.</span> <span class="toc-text">自定义网桥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">8.</span> <span class="toc-text">编辑网络配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-HTTP-HTTPS-%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86"><span class="toc-number"></span> <span class="toc-text">配置 HTTP&#x2F;HTTPS 网络代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-dockerd-%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">为 dockerd 设置网络代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-docker-%E5%AE%B9%E5%99%A8%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">为 docker 容器设置网络代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-docker-build-%E8%BF%87%E7%A8%8B%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">为 docker build 过程设置网络代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E5%88%B0%E7%82%B9%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">创建一个点到点连接</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/16/docker(3)/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/16/docker(3)/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/16/docker(3)/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2024/01/16/docker(3)/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/16/docker(3)/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/16/docker(3)/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/16/docker(3)/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    xorr
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
