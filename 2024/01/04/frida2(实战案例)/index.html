@@ -9,7 +9,7 @@
     <meta name="description" content="当我们获取到Java类之后，我们直通过接 ..implementations &#x3D; function() {}的方式来hook wrapper类的method方法，不管是实例方法还是静态方法都可以。 实战案例  java.cast,约等于强制类型转换  arg1就是要插入数据的表名， arg2是表的主键， arg3是要插入表的数据的字段名称跟值的集合。这样， 我们就可以轻松拿到每条消息的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="frida2(实战案例)">
-<meta property="og:url" content="http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/index.html">
+<meta property="og:url" content="http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/index.html">
 <meta property="og:site_name" content="eeeeerror">
 <meta property="og:description" content="当我们获取到Java类之后，我们直通过接 ..implementations &#x3D; function() {}的方式来hook wrapper类的method方法，不管是实例方法还是静态方法都可以。 实战案例  java.cast,约等于强制类型转换  arg1就是要插入数据的表名， arg2是表的主键， arg3是要插入表的数据的字段名称跟值的集合。这样， 我们就可以轻松拿到每条消息的">
 <meta property="og:locale" content="en_US">
@@ -119,17 +119,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&text=frida2(实战案例)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&is_video=false&description=frida2(实战案例)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=frida2(实战案例)&body=Check out this article: http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&name=frida2(实战案例)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&t=frida2(实战案例)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&text=frida2(实战案例)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&is_video=false&description=frida2(实战案例)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=frida2(实战案例)&body=Check out this article: http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&name=frida2(实战案例)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&t=frida2(实战案例)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -254,17 +254,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&text=frida2(实战案例)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&is_video=false&description=frida2(实战案例)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=frida2(实战案例)&body=Check out this article: http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&name=frida2(实战案例)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&t=frida2(实战案例)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&text=frida2(实战案例)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&is_video=false&description=frida2(实战案例)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=frida2(实战案例)&body=Check out this article: http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&title=frida2(实战案例)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&name=frida2(实战案例)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://eeeeerror.github.io/2024/01/04/frida2(%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B)/&t=frida2(实战案例)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
